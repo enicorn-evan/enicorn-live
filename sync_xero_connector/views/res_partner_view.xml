@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="xero_connector_view_partner_form" model="ir.ui.view">
+        <field name="name">partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <field name="website" position="before">
+                <field name="direct_dial" string="Direct Dial"/>
+                <field name="skype_name" string="Skype"/>
+            </field>
+            <field name="vat" position="before">
+                <field name="attention_to"/>
+            </field>
+            <field name="category_id" position="after">
+                <field name="bank_account_id"/>
+                <field name="tax_number" string="Tax"/>
+            </field>
+            <field name="email" position="attributes">
+                <attribute name="required">1</attribute>
+                <attribute name='placeholder'>E-mail</attribute>
+            </field>
+            <field name="ref" position="after">
+                <field name="contact_xero_company_ids" invisible="1">
+                    <tree>
+                        <field name="company_id"/>
+                        <field name="xero_contact_id"/>
+                    </tree>
+                </field>
+            </field>
+        </field>
+    </record>
+
+    <record id="xero_connector_view_partner_category_form" model="ir.ui.view">
+        <field name="name">Contact Tags</field>
+        <field name="model">res.partner.category</field>
+        <field name="inherit_id" ref="base.view_partner_category_form"/>
+        <field name="arch" type="xml">
+            <form string="Contact Tag">
+                <xpath expr="//group" position="after">
+                    <field name="partner_ids" />
+                </xpath>
+            </form>
+        </field>
+    </record>
+
+    <!-- <record id="xero_res_partner_view_search" model="ir.ui.view">
+        <field name="name">res.partner.view.search</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <filter name="type_company" position="after">
+                <separator/>
+                <filter name="not_exported" string="Not Exported in Xero" domain="[('contact_id','=',False)]"/>
+            </filter>
+        </field>
+    </record> -->
+
+    <record id="action_contact_export_xero" model="ir.actions.server">
+        <field name="name">Export In Xero</field>
+        <field name="type">ir.actions.server</field>
+        <field name="state">code</field>
+        <field name="model_id" ref="model_res_partner"/>
+        <field name="binding_model_id" ref="model_res_partner"/>
+        <field name="code">records.action_export_contact()</field>
+    </record>
+</odoo>

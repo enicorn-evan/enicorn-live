@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="default_sale" model="account.tax">
+        <field name="name">DEFAULT SALE</field>
+        <field eval="0.00" name="amount"/>
+        <field name="amount_type">percent</field>
+        <field name="type_tax_use">sale</field>
+    </record>
+
+    <record id="default_purchase" model="account.tax">
+        <field name="name">DEFAULT PURCHASE</field>
+        <field eval="0.00" name="amount"/>
+        <field name="amount_type">percent</field>
+        <field name="type_tax_use">purchase</field>
+    </record>
+
+    <!-- Scheduler for Xero Accounts-->
+    <record forcecreate="True" id="ir_cron_scheduler_xero_account" model="ir.cron">
+        <field name="name">Inactive Xero Accounts</field>
+        <field name="model_id" ref="model_xero_account"/>
+        <field name="active" eval="True" />
+        <field name="user_id" ref="base.user_root" />
+        <field name="interval_number">30</field>
+        <field name="interval_type">minutes</field>
+        <field name="numbercall">-1</field>
+        <field name="state">code</field>
+        <field name="code">model.run_scheduler()</field>
+        <field name="doall" eval="False"/>
+    </record>
+
+    <record forcecreate="True" id="ir_cron_automatic_import_data" model="ir.cron">
+        <field name="name">Automatic Import Data (XERO -> ODOO)</field>
+        <field name="model_id" ref="model_xero_account"/>
+        <field name="active" eval="False" />
+        <field name="user_id" ref="base.user_root" />
+        <field name="state">code</field>
+        <field name="code">model.automatic_import()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+    </record>
+
+    <record forcecreate="True" id="ir_cron_automatic_export_data" model="ir.cron">
+        <field name="name">Automatic Export Data (ODOO -> XERO)</field>
+        <field name="model_id" ref="model_xero_account"/>
+        <field eval="False" name="active" />
+        <field name="user_id" ref="base.user_root" />
+        <field name="state">code</field>
+        <field name="code">model.automatic_export()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field eval="False" name="doall" />
+    </record>
+
+</odoo>

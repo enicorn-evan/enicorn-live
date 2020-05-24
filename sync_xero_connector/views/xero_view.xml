@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_mismatch_tree">
+        <field name="name">view.mismatch.log.tree</field>
+        <field name="model">mismatch.log</field>
+        <field name="arch" type="xml">
+            <tree create="0" edit="0">
+                <field name="name"/>
+                <field name="source_model"/>
+                <field name="source_id"/>
+                <field name="exported_date"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_mismatch_log" model="ir.actions.act_window">
+        <field name="name">Mismatch Log</field>
+        <field name="res_model">mismatch.log</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <record model="ir.ui.view" id="view_xero_account_form">
+        <field name="name">view.xero.account.form</field>
+        <field name="model">xero.account</field>
+        <field name="arch" type="xml">
+            <form string="Account">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="company_id" widget="selection" required="1"/> <!-- attrs="{'invisible': [('oauth_type','!=','oauth1')], 'required': [('oauth_type', '=', 'oauth1')]}"/> -->
+                        </group>
+                        <group>
+                            <field name="oauth_type" widget="radio"/>
+                            <field name="account_type" widget="radio" attrs="{'invisible': [('oauth_type','!=','oauth1')]}"/>
+                            <field name="active" />
+                        </group>
+                    </group>
+                    <group string="OAuth2 Details" attrs="{'invisible': [('oauth_type','!=','oauth2')]}">
+                        <field name="id" invisible="1"/>
+                        <field name="client_id" attrs="{'required': [('oauth_type', '=', 'oauth2')]}"/>
+                        <field name="client_secret" attrs="{'required': [('oauth_type', '=', 'oauth2')]}"/>
+                        <field name="callback_uri" attrs="{'required': [('oauth_type', '=', 'oauth2')]}"/>
+                        <field name="raw_url" widget="url" readonly="1" attrs="{'invisible': [('raw_url', '=', False)]}"/>
+                    </group>
+                    <button name="generate_url_auth2" string="Generate OAuth2 URL" type="object" attrs="{'invisible': [('oauth_type','!=','oauth2')]}"/>
+                    <group>
+                        <field name="raw_uri" widget="url" attrs="{'invisible': [('raw_url', '=', False)]}"/>
+                        <field name="state" invisible="1"/>
+                    </group>
+                    <button name="authenticate" string="Authentication" type="object" attrs="{'invisible': [('oauth_type','!=','oauth2')]}"/>
+                    <group>
+                        <field name="auth" invisible="1"/>
+                        <field name="xero_org_id" domain="[('xero_account_id', '=', id)]" options="{'no_create': 1, 'no_edit': 1}" attrs="{'invisible': [('oauth_type','!=','oauth2')]}"/>
+                        <!-- <button name="auth2_import_contact" string="Import Contact" type="object"/> -->
+                    </group>
+                    <p class="oe_grey" attrs="{'invisible': [('oauth_type','!=','oauth2')]}">
+                        <strong>Note</strong>: Follow these steps <br/>
+                            1. Generate URL <br/>
+                            2. Go to URL and Allow Access<br/>
+                            3. After authorization the user will be redirected from Xero to the callback URI <br/>
+                            4. Copy URL <br/>
+                            5. Copied URL add in raw uri<br/>
+                            6. Authentication <br/>
+                            7. After Authentication, Select Xero Organization for Import/Export data. <br/>
+                    </p>
+
+                    <group string="Authentication Details" attrs="{'invisible': [('oauth_type','!=','oauth1')]}">
+                        <field name="consumer_key" attrs="{'required': [('oauth_type', '=', 'oauth1')]}"/>
+                        <field name="consumer_secret" attrs="{'required': [('oauth_type', '=', 'oauth1')]}"/>
+                        <field name="rsa_key_file" filename="filename" attrs="{'invisible': [('account_type','=','public')],'required': [('oauth_type', '=', 'oauth1'), ('account_type','=','private')]}"/>
+                        <field name="filename" invisible="1"/>
+                        <field name="url" widget="url" readonly="1" attrs="{'invisible': [('url', '=', False)]}"/>
+                        <field name="authentication_number" class="oe_inline" attrs="{'invisible': [('url', '=', False)]}"/>
+                        <field name="auth" invisible="1"/>
+                        <field name="oauth_token" invisible="1"/>
+                        <field name="oauth_token_secret" invisible="1"/>
+                        <field name="oauth_request_token" invisible="1"/>
+                        <field name="oauth_request_token_secret" invisible="1"/>
+                    </group>
+                    <button name="generate_url" string="Generate URL" type="object" attrs="{'invisible': ['|', '|', ('url', '!=', False),('account_type','=','private'), ('oauth_type','!=','oauth1')]}"/>
+                    <p class="oe_grey" attrs="{'invisible': ['|',('account_type','=','private'), ('oauth_type','!=','oauth1')]}">
+                        <strong>Note</strong>: Follow these steps <br/>
+                            1. Generate URL <br/>
+                            2. Go to URL and Click Authorise Button<br/>
+                            3. Copy Authentication Number <br/>
+                            4. Import/Export Data <br/>
+                    </p>
+                    <p class="oe_grey" attrs="{'invisible': ['|',('account_type','=','public'), ('oauth_type','!=','oauth1')]}">
+                        <strong>Note</strong>: Follow these steps <br/>
+                            1. Upload Private.key file in RSA key file field.<br/>
+                            2. Import/Export Data <br/>
+                    </p>
+                    <br/>
+                    <group>
+                        <group>
+                             <field name="contact_overwrite"  attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
+                        </group>
+                    </group>
+                    <p class="oe_grey" attrs="{'invisible': [('account_type','=','public')]}">
+                        <strong>Note</strong>: Please tick 'Contact Overwrite' boolean, If you want to same name &amp; email contact overwrite to both side. <br/>
+                    </p>
+                    <label for="import_export_creditnotes" string="Credit Notes" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
+                    <field name="import_export_creditnotes" widget="radio" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
+                    <p class="oe_grey" attrs="{'invisible': [('account_type','=','public')]}">
+                        <strong>Note</strong>: You can either Import or Export Credit Note based on configuration.
+                    </p>
+                    <separator string="Import" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
+                    <br/>
+                    <label for="import_option" string="Option" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
+                    <field name="import_option" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" widget="radio"/>
+                    <br/>
+                    <label for="inv_without_product" string="If you want to import invoice without product tick this" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
+                    <field name="inv_without_product" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
+                    <br/>
+                    <group>
+                        <group>
+                            <field name="tracked_category_id" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
+                        </group>
+                        <group>
+                            <field name="untracked_category_id" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
+                        </group>
+                    </group>
+                    <br/>
+                    <br/>
+                    <button name="import_currency" string="Currencies" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
+                    <button name="import_tax" string="Taxes" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                    <button name="import_account" string="Chart of Accounts" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                    <button name="import_manual_journal" string="Manual Journals" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                    <button name="import_bank_account" string="Bank Accounts" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                    <button name="import_contact" string="Contacts" type="object" attrs="{'invisible': ['|',('contact_overwrite','=', True), ('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                    <button name="import_contact_overwrite" string="Contacts" type="object" attrs="{'invisible': ['|',('contact_overwrite','=', False),('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                    <button name="import_product" string="Products" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                    <button name="import_invoice" string="Invoices" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                    <button name="import_credit_notes" string="Credit Notes" type="object" attrs="{'invisible': ['|',('import_export_creditnotes', 'not in', 'import'),('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                    <separator string="Export" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
+                    <group>
+                        <group>
+                            <field name="adjustment_account_id" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
+                        </group>
+                        <group></group>
+                    </group>
+                    <label for="export_disable" string="Disable Export (Accounts &amp; Taxes)" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
+                    <field name="export_disable" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
+                    <br/>
+                    <button name="export_tax" string="Taxes" type="object" attrs="{'invisible': ['|', ('export_disable', '=', True), ('account_type','=','public'),('url', '=', False)]}"/>
+                    <button name="export_account" string="Chart of Accounts" type="object" attrs="{'invisible': ['|', ('export_disable', '=', True), ('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                    <button name="export_bank_account" string="Bank Accounts" type="object" attrs="{'invisible': ['|', ('export_disable', '=', True), ('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                    <button name="export_contact" string="Contacts" type="object" attrs="{'invisible': ['|',('contact_overwrite','=', True), ('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                    <button name="export_contact_overwrite" string="Contacts" type="object" attrs="{'invisible': ['|',('contact_overwrite','=', False),('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                    <button name="export_product" string="Products" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                    <button name="export_invoice" string="Invoices" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                    <button name="export_payment" string="Invoice Payment" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                    <button name="export_credit_notes" string="Credit Notes" type="object" attrs="{'invisible': ['|',('import_export_creditnotes', 'not in', 'export'),('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                    <button name="export_credit_notes_payment" string="Credit Notes Payment" type="object" attrs="{'invisible': ['|',('import_export_creditnotes', 'not in', 'export'),('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                    <button name="export_inventory_adjustments" string="Inventory Adjustments" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                    <button name="export_attachments" string="Attachments" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                    <!-- <button name="export_manual_journal" string="Manual Journal" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/> -->
+                    <br/>
+                    <notebook>
+                        <page string="Accounting Details">
+                            <group>
+                                <group>
+                                    <field name="customer_inv_journal_id" required="1" widget="selection" domain="[('type', '=', 'sale'), ('company_id', '=', company_id)]"/>
+                                    <field name="miscellaneous_operations_journal_id" required="1" widget="selection" domain="[('type', '=', 'general'), ('company_id', '=', company_id)]"/>
+                                </group>
+                                <group>
+                                    <field name="vendor_bill_journal_id" required="1" widget="selection" domain="[('type', '=', 'purchase'), ('company_id', '=', company_id)]"/>
+                                </group>
+                            </group>
+                            <separator string="Payment Journal"/>
+                            <field name="journal_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="code"/>
+                                    <field name="type"/>
+                                    <field name="company_id"/>
+                                    <field name="default_debit_account_id"/>
+                                    <field name="default_credit_account_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Xero Organization Details" attrs="{'invisible': [('oauth_type','!=','oauth2')]}">
+                            <field name="xero_org_ids">
+                                <tree editable="top" create="0">
+                                    <field name="name"/>
+                                    <field name="xero_id"/>
+                                    <field name="xero_tenant_id"/>
+                                    <field name="xero_tenant_type"/>
+                                    <!-- <field name="company_id"/> -->
+                                    <field name="active"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_xero_account_tree">
+        <field name="name">view.xero.account.tree</field>
+        <field name="model">xero.account</field>
+        <field name="arch" type="xml">
+            <tree string="Account">
+                <field name="name"/>
+                <field name="oauth_type" />
+                <field name="company_id" groups="base.group_multi_company"/>
+                <!-- <field name="consumer_key"/>
+                <field name="consumer_secret"/> -->
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_xero_account" model="ir.actions.act_window">
+        <field name="name">Xero Account</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">xero.account</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

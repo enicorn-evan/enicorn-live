@@ -1,0 +1,598 @@
+<section class="oe_container">
+    <div class="oe_row">
+        <h2 class="oe_slogan" style="color:#875A7B;">Xero Integration</h2>
+    </div>
+    <div class="oe_row">
+        <div class="oe_span12" style="font-size: large;">
+            <div class="row">
+                <div class="col-md-9">
+                    <p>Integrating Odoo with Xero allows you to view all your invoices and expenses in Odoo. You can run reports, view financial data about your customers and projects and display important metrics on your dashboard.
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <div class="box_data" style="background-color:#F0F4F7;color: #875A7B">
+                        <h4 style="text-align: center;padding-top: 15px;">This module is compatible with</h4>
+                        <ul style="padding: 20px;">
+                            <li class="Community" style="list-style: none;margin-bottom: 15px;">
+                                <span style="margin-right: 10px;"><img src="tick.svg" style="width: 25px;height: 25px;"/></span>
+                                <span>Community</span>
+                            </li>
+                            <li class="Enterprise" style="list-style: none;margin-bottom: 15px;">
+                                <span style="margin-right: 10px;"><img src="tick.svg" style="width: 25px;height: 25px;"/></span>
+                                <span>Enterprise</span>
+                            </li>
+                            <li class="odoo_sh" style="list-style: none;margin-bottom: 15px;">
+                                <span style="margin-right: 10px;"><img src="tick.svg" style="width: 25px;height: 25px;"/></span>
+                                <span>Odoo.sh</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12">
+            <h2 class="oe_slogan"><img src="new.gif" height="90px" width="90px"/>Now supports OAuth 2.0 types of Xero Applications</h2>
+        </div>
+    </div>
+</section>
+
+
+<section class="oe_container">
+    <div class="oe_row">
+        <h2 class="oe_slogan" style="color:#875A7B;"><img src="benefit.png" height="45px" width="45px"/>Key Features</h2>
+        <div class="oe_span12" style="font-size: large;">
+            <ul>
+                <div>
+                    <i class="fa fa-check" style="color: #cd2d47;font-size: 15px;"></i> Raise invoices from Odoo.
+                </div>
+                <div>
+                    <i class="fa fa-check" style="color: #cd2d47;font-size: 15px;"></i> Allow your sales team to view overdue client accounts in Odoo.
+                </div>
+                <div>
+                    <i class="fa fa-check" style="color: #cd2d47;font-size: 15px;"></i> Reduce double data entry between Odoo and Xero.
+                </div>
+                <div>
+                    <i class="fa fa-check" style="color: #cd2d47;font-size: 15px;"></i> Improve cash flow by accelerating payment time.
+                </div>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row">
+        <h2 class="oe_slogan" style="color:#875A7B;">
+            <img src="question.png" height="45px" width="45px"/> How Xero Integration works
+        </h2>
+        <div class="oe_span12" style="font-size: large;">
+            <p>Integration with Xero works both ways and can be set either as manual or automatic. All you need to do is configure, which data you would like to synchronize.<br/><br/>Instead of creating different Odoo instance for each Xero organization (account), you can connect multiple Xero organizations (accounts) to one Odoo instance. So, if your Odoo instance has multiple company accounts, you can now connect each account to a different Xero organization (account). This way all data on your companies are in one place.<br/><br/>
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row">
+        <h2 class="oe_slogan" style="color:#875A7B;">
+            <img src="Startup_Rocket-512.png" height="45px" width="45px"/> Boosted up the speed for API calling for import/export operations
+        </h2>
+        <div class="oe_span12" style="font-size: large;">
+            <p>Use pagination to retrieve 100 data at a time. Endpoints that currently support pagination are invoices, credit notes, contacts and manual journals.<br/><br/>
+            Use batches for put 50 data at a time. Endpoints that currently support batches are invoices, credit notes, contacts.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!--Third block -->
+<section class="oe_container">
+    <div class="oe_row">
+        <h2 class="oe_slogan" style="color:#875A7B;">
+            <img src="sign-sync-icon.png" height="45px" width="45px"/> What is synced
+        </h2>
+        <div class="oe_span12" style="font-size: large;">
+            <div><img src="import.png" height="45px" width="45px"/><strong style="font-weight: bold;"> Import (Xero to Odoo)</strong></div><br/>
+            <ul style="list-style-type:square">
+                <li><strong style="font-weight: bold;">Currencies</strong>: Pulled from Xero with the initial sync and create a new currency in Odoo if not available.</li>
+                <li><strong style="font-weight: bold;">Chart Of Accounts</strong>: Chart Of Accounts in Odoo. Chart of Accounts is pulled from Xero with the initial sync. </li>
+                <li><strong style="font-weight: bold;">Taxes / Tax Rates</strong>: Pulled from Xero with the initial sync. Any changes in Tax Rates in Xero are synced to Odoo.</li>
+                <li><strong style="font-weight: bold;">Contact Groups / Contact Tags</strong>: Pulled from Xero with the initial sync and create new Contact Tags in Odoo.</li>
+                <li><strong style="font-weight: bold;">Contacts (Suppliers / Customers)</strong>: All contacts which are stored in Xero, it could be Supplier or Customer.</li>
+                <li><strong style="font-weight: bold;">Bank Accounts</strong>: Accounts with bank type (not bank transaction and other details).</li>
+                <li><strong style="font-weight: bold;">Manual Journal</strong>: All type of manual journal, which is recorded directly in Xero.</li>
+                <li><strong style="font-weight: bold;">Items / Products</strong>: Products with its details (sale price, cost price, accounts, taxes etc), Also manage tracked and Untracked Products.</li>
+                <li><strong style="font-weight: bold;">Invoices</strong>: Customer Invoices with taxes. Also, create payment lines in Odoo if an invoice is paid fully or partially in Xero.</li>
+                <li><strong style="font-weight: bold;">Bills</strong>: Bills with taxes. Also, create payment lines in Odoo if bills are paid fully or partially in Xero.</li>
+                <li><strong style="font-weight: bold;">Credit Note (ACCRECCREDIT)</strong>: An Account Receivable (customer) Credit Note with payment and allocations.</li>
+                <li><strong style="font-weight: bold;">Credit Note (ACCPAYCREDIT)</strong>: An Accounts Payable (supplier) Credit Note with payment and allocations.</li>
+            </ul>
+
+            <strong style="color: red; font-weight: bold;">Note:</strong> As Xero API doesn't provide the tracking for credit note allocation, So when Credit Note goes in paid stage on Xero then allocation will be applied in Odoo.
+            <br/><br/>
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col" style="background-color: #875A7B; border-color: #875A7B;">#</th>
+                  <th scope="col" style="background-color: #875A7B; border-color: #875A7B;">Objects</th>
+                  <th scope="col" style="background-color: #875A7B; border-color: #875A7B;"><center>OAuth2.0</center></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Currencies</td>
+                  <td><center><i class="fa fa-check"/></center></td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Taxes</td>
+                  <td><center><i class="fa fa-check"/></center></td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Chart of Accounts</td>
+                  <td><center><i class="fa fa-check"/></center></td>
+                </tr>
+                <tr>
+                  <th scope="row">4</th>
+                  <td>Manual Journals</td>
+                  <td><center><i class="fa fa-check"/></center></td>
+                </tr>
+                <tr>
+                  <th scope="row">5</th>
+                  <td>Bank Accounts</td>
+                  <td><center><i class="fa fa-check"/></center></td>
+                </tr>
+                <tr>
+                  <th scope="row">6</th>
+                  <td>Contact Groups</td>
+                  <td><center><i class="fa fa-check"/></center></td>
+                </tr>
+                <tr>
+                  <th scope="row">7</th>
+                  <td>Contacts</td>
+                  <td><center><i class="fa fa-check"/></center></td>
+                </tr>
+                <tr>
+                  <th scope="row">8</th>
+                  <td>Products (Tracked / Untracked)</td>
+                  <td><center><i class="fa fa-check"/></center></td>
+                </tr>
+                <tr>
+                  <th scope="row">9</th>
+                  <td>Invoices / Bills</td>
+                  <td><center><i class="fa fa-check"/></center></td>
+                </tr>
+                <tr>
+                  <th scope="row">10</th>
+                  <td>Credit Notes</td>
+                  <td><center><i class="fa fa-check"/></center></td>
+                </tr>
+                <tr>
+                  <th scope="row">11</th>
+                  <td>Invoice / Bill Payments</td>
+                  <td><center><i class="fa fa-check"/></center></td>
+                </tr>
+                <tr>
+                  <th scope="row">12</th>
+                  <td>Credit Notes Payments / Allocation</td>
+                  <td><center><i class="fa fa-check"/></center></td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row">
+        <div class="oe_span12" style="font-size: large;">
+            <div><img src="export.png" height="45px" width="45px"/><strong style="font-weight: bold;"> Export (Odoo to Xero)</strong></div><br/>
+            <ul style="list-style-type:square">
+                <li><strong style="font-weight: bold;">Chart Of Accounts</strong>: Chart Of Accounts in Xero. Chart of Accounts is created in Xero with the initial sync.</li>
+                <li><strong style="font-weight: bold;">Taxes / Tax Rates</strong>: Tax Rates in Xero. Tax rates are created in Xero with the initial sync.</li>
+                <li><strong style="font-weight: bold;">Contact Groups / Contact Tags</strong>: All Contact Tags of Odoo will be created as Contact Groups in Xero.</li>
+                <li><strong style="font-weight: bold;">Contacts (Suppliers / Customers)</strong>: All contacts which are stored in Odoo, whether Customer or Supplier.</li>
+                <li><strong style="font-weight: bold;">Bank Accounts</strong>: Accounts with bank type.</li>
+                <li><strong style="font-weight: bold;">Items / Products</strong>: Products with its details (sale price, cost price, accounts, taxes etc), Also manage tracked and Untracked Products.</li>
+                <li><strong style="font-weight: bold;">Invoices</strong>: Customer Invoice with tax. Also, create a payment in Xero if an invoice is paid fully or partially in Odoo.</li>
+                <li><strong style="font-weight: bold;">Bills</strong>: Bills with tax. Also, create a payment in Xero if bills are paid fully or partially in Odoo.</li>
+                <li><strong style="font-weight: bold;">Credit Note (ACCRECCREDIT)</strong>: An Account Receivable (customer) Credit Note with payment and allocations.</li>
+                <li><strong style="font-weight: bold;">Credit Note (ACCPAYCREDIT)</strong>: An Accounts Payable (supplier) Credit Note with payment and allocations.</li>
+                <li><strong style="font-weight: bold;">Inventory Adjustment</strong>: For tracked product, if qty will be increasing or decreasing in Odoo using an option like (Buying and selling inventory - bills and invoices, By Inventory adjustment, By Manufacturing process) it will be reflected in Xero.</li>
+                <li><strong style="font-weight: bold;">Attachment</strong>: Attachments of Invoice/Vendor Bill will be sent to Xero.</li>
+            </ul>
+            <strong style="color: red; font-weight: bold;">Note:</strong> You can either Import or Export Credit Note based on configuration.
+            <br/><br/>
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col" style="background-color: #875A7B; border-color: #875A7B;">#</th>
+                  <th scope="col" style="background-color: #875A7B; border-color: #875A7B;">Objects</th>
+                  <th scope="col" style="background-color: #875A7B; border-color: #875A7B;"><center>OAuth2.0</center></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Taxes</td>
+                  <td><center><i class="fa fa-check"/></center></td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Chart of Accounts</td>
+                  <td><center><i class="fa fa-check"/></center></td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Bank Accounts</td>
+                  <td><center><i class="fa fa-check"/></center></td>
+                </tr>
+                <tr>
+                  <th scope="row">4</th>
+                  <td>Contact Groups</td>
+                  <td><center><i class="fa fa-check"/></center></td>
+                </tr>
+                <tr>
+                  <th scope="row">5</th>
+                  <td>Contacts</td>
+                  <td><center><i class="fa fa-check"/></center></td>
+                </tr>
+                <tr>
+                  <th scope="row">6</th>
+                  <td>Products</td>
+                  <td><center><i class="fa fa-check"/></center></td>
+                </tr>
+                <tr>
+                  <th scope="row">7</th>
+                  <td>Invoices/ Bills</td>
+                  <td><center><i class="fa fa-check"/></center></td>
+                </tr>
+                <tr>
+                  <th scope="row">8</th>
+                  <td>Credit Notes</td>
+                  <td><center><i class="fa fa-check"/></center></td>
+                </tr>
+                <tr>
+                  <th scope="row">9</th>
+                  <td>Invoices/ Bills</td>
+                  <td><center><i class="fa fa-check"/></center></td>
+                </tr>
+                <tr>
+                  <th scope="row">10</th>
+                  <td>Invoice / Bill Payments</td>
+                  <td><center><i class="fa fa-check"/></center></td>
+                </tr>
+                <tr>
+                  <th scope="row">11</th>
+                  <td>Credit Notes Payments / Allocation</td>
+                  <td><center><i class="fa fa-check"/></center></td>
+                </tr>
+                <tr>
+                  <th scope="row">12</th>
+                  <td>Inventory Adjustments</td>
+                  <td><center><i class="fa fa-check"/></center></td>
+                </tr>
+                <tr>
+                  <th scope="row">13</th>
+                  <td>Invoice Attachments</td>
+                  <td><center><i class="fa fa-check"/></center></td>
+                </tr>
+                <tr>
+                  <th scope="row">14</th>
+                  <td>Credit Notes Attachments</td>
+                  <td><center><i class="fa fa-check"/></center></td>
+                </tr>
+                <tr>
+                  <th scope="row">15</th>
+                  <td>Contact Attachments</td>
+                  <td><center><i class="fa fa-check"/></center></td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!--Fifth block -->
+<section class="oe_container">
+    <div class="oe_row">
+        <div class="oe_span12" style="color:#875A7B;">
+            <h2 class="oe_slogan"><img src="document-file-icon.png" height="45px" width="45px"/> Xero setup guide</h2>
+        </div>
+        <div class="oe_span12" style="font-size: large;">
+            <div>You will also find a full documentation with all screenshots for example</div>
+            <div>1 - How to configure Xero OAuth 1.0</div>
+            <div>2 - How to configure Xero OAuth 2.0</div>
+            <div>3 - How to configure Xero and Odoo Accounts?</div>
+            <div>4 - Import and Export Operations</div>
+            <div>You will find user_guide.pdf document in <strong>doc</strong> directory inside the module</div>
+            <div>
+                <strong style="color: red;">Note: </strong> For Odoo.sh we have added installation steps in documentation, but if you need more then, we will provide you more support once you purchase support hours from us.
+            </div>
+        </div>
+    </div>
+</section>
+<!--Sixth block -->
+<!-- <section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12">
+            <h2 class="oe_slogan">Demo Video</h2>
+        </div>
+        <div class="oe_span12" style="font-size: large;">
+            <p class="oe_mt32 oe_centeralign">
+              <div><a href="https://www.youtube.com/watch?v=xGbWWSIAvNQ">Click Here</a> to watch demo video on Youtube.</div>
+            </p>
+        </div>
+    </div>
+</section> -->
+<!--Seventh block -->
+
+<section class="oe_container">
+    <div class="oe_row">
+        <div class="oe_span12" style="font-size: large;">
+            <h2 class="oe_slogan"><img src="disclaimer-icon.png" height="45px" width="45px"/> Disclaimer</h2>
+        </div>
+        <div class="oe_span12" style="font-size: large;">
+            Whenever there is a change in API from Xero or change in related Odoo objects you can contact us to look into it.
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan"><img src="accounting.png" height="45px" width="45px"> Check out our Top Selling Accounting Products</h2>
+        <div class="oe_span12" style="font-size: large">
+        <center>
+            <a href="https://apps.odoo.com/apps/modules/category/Accounting/browse?order=Best+Sellers&search=synconics" target="_blank">
+            <img src="Click_Here.png" width="20%" class="mt8"/> 
+        </a>
+        </center>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12">
+            <h2 class="oe_slogan">Connect with Us on</h2>
+        </div>
+        <!--Facebook-->
+        <center>
+            <a href="https://www.facebook.com/Synconics-Technologies-Official-Odoo-Partner-312564668790997/" target="_blank">
+            <img src="facebook.png" width="20%" class="mt8"/> 
+            </a>
+            <a href="https://www.instagram.com/synconics_technologies/" target="_blank">
+            <img src="instagram.png" width="20%" class="mt8"/> 
+            </a>
+            <a href="https://www.linkedin.com/company/synconics-technologies-p-ltd-" target="_blank">
+            <img src="linkedin.png" width="20%" class="mt8"/> 
+            </a>
+            <a href="https://twitter.com/Synconics" target="_blank">
+            <img src="twitter.png" width="20%" class="mt8"/> 
+            </a>
+            <br/>
+            <a href="https://www.youtube.com/user/synconics" target="_blank">
+            <img src="youtube.png" width="20%" class="mt8"/> 
+            </a>
+        </center>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+             <h2 class="oe_slogan"><a href="https://apps.odoo.com/apps/modules/category/Accounting/browse?order=Newest&search=synconics" target="_blank" style="color: #000000 !important;">Suggested Products</a></h2>
+        </div>
+        <div class="col-md-4">
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div id="slider_data" class="row carousel slide mt64 mb32" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" style="min-height: 0px;">
+                <div class="col-xs-12 col-sm-4 col-md-4 mb16 mt16" style="float: left;
+                ">
+                    <a href="https://apps.odoo.com/apps/modules/13.0/woo_commerce_connector/" target="_blank">
+                        <div style="box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);border-radius: 10px;text-align: center;">
+                           <img class="img img-responsive center-block" style="border-top-left-radius: 10px;border-top-right-radius: 10px;    height: 125px;" src="suggested_product/woo_commerce_connector.jpg">
+                           <h4 class="mt0" style="padding:6% 4%;text-align: center;white-space: nowrap;width: 100%;overflow: hidden;text-overflow: ellipsis;font-family: Roboto-medium;">
+                              WooCommerce Connector
+                           </h4>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-4 mb16 mt16" style="float: left;
+                ">
+                    <a href="https://apps.odoo.com/apps/modules/13.0/sync_magento_connector/" target="_blank">
+                        <div style="box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);border-radius: 10px;text-align: center;">
+                           <img class="img img-responsive center-block" style="border-top-left-radius: 10px;border-top-right-radius: 10px;    height: 125px;" src="suggested_product/sync_magento_connector.png">
+                           <h4 class="mt0" style="padding:6% 4%;text-align: center;white-space: nowrap;width: 100%;overflow: hidden;text-overflow: ellipsis;font-family: Roboto-medium;">
+                              Odoo Magento 2 Connector
+                           </h4>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-4 mb16 mt16" style="float: left;
+                ">
+                    <a href="https://apps.odoo.com/apps/modules/13.0/sync_shopify_connector/" target="_blank">
+                        <div style="box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);border-radius: 10px;text-align: center;">
+                           <img class="img img-responsive center-block" style="border-top-left-radius: 10px;border-top-right-radius: 10px;    height: 125px;" src="suggested_product/sync_shopify_connector.png">
+                           <h4 class="mt0" style="padding:6% 4%;text-align: center;white-space: nowrap;width: 100%;overflow: hidden;text-overflow: ellipsis;font-family: Roboto-medium;">
+                              Shopify Connector
+                           </h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="carousel-item" style="min-height: 0px;">
+                <div class="col-xs-12 col-sm-4 col-md-4 mb16 mt16" style="float: left;
+                ">
+                    <a href="https://apps.odoo.com/apps/modules/13.0/authorize_net/" target="_blank">
+                        <div style="box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);border-radius: 10px;text-align: center;">
+                           <img class="img img-responsive center-block" style="border-top-left-radius: 10px;border-top-right-radius: 10px;    height: 125px;" src="suggested_product/authorize_net.png">
+                           <h4 class="mt0" style="padding:6% 4%;text-align: center;white-space: nowrap;width: 100%;overflow: hidden;text-overflow: ellipsis;font-family: Roboto-medium;">
+                              Backend Payment Acquirer: Authorize.net
+                           </h4>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-4 mb16 mt16" style="float: left;
+                ">
+                    <a href="https://apps.odoo.com/apps/modules/13.0/sync_payment_beanstream/" target="_blank">
+                        <div style="box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);border-radius: 10px;text-align: center;">
+                           <img class="img img-responsive center-block" style="border-top-left-radius: 10px;border-top-right-radius: 10px;    height: 125px;" src="suggested_product/sync_payment_beanstream.png">
+                           <h4 class="mt0" style="padding:6% 4%;text-align: center;white-space: nowrap;width: 100%;overflow: hidden;text-overflow: ellipsis;font-family: Roboto-medium;">
+                              Beanstream(Bambora) Payment Acquirer
+                           </h4>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-4 mb16 mt16" style="float: left;
+                ">
+                    <a href="https://apps.odoo.com/apps/modules/13.0/sync_payment_square/" target="_blank">
+                        <div style="box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);border-radius: 10px;text-align: center;">
+                           <img class="img img-responsive center-block" style="border-top-left-radius: 10px;border-top-right-radius: 10px;    height: 125px;" src="suggested_product/sync_payment_square.png">
+                           <h4 class="mt0" style="padding:6% 4%;text-align: center;white-space: nowrap;width: 100%;overflow: hidden;text-overflow: ellipsis;font-family: Roboto-medium;">
+                              Integration of Square Payment Acquirer with Odoo
+                           </h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#slider_data" data-slide="prev" style="left:-25px;width: 35px;color: #000;">
+        <span class="carousel-control-prev-icon"><i class="fa fa-chevron-left" style="font-size:24px"></i></span>
+        </a>
+        <a class="carousel-control-next" href="#slider_data" data-slide="next" style="right:-25px;width: 35px;color: #000;">
+        <span class="carousel-control-next-icon"><i class="fa fa-chevron-right" style="font-size:24px"></i></span>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced" style="width: 100%;">
+        <div class="oe_span12" style="width: 100%;">
+            <h2 class="oe_slogan">Free Support</h2>
+        </div>
+        <div class="oe_span12" style="width: 100%;">
+            <span>1) One month free bug support period will be offered pertaining to any one server used, testing or live.</span><br/>
+            <span>2) If an error appears in our app due to other custom modules installed in your system, we will charge for our efforts to resolve those errors. </span><br/>
+            <span>3) Please refer the document for configuration. If you need our support for configuration, please request our paid support. </span><br/>
+            <span>4) Please note that you are not allowed to distribute or resell this module after purchase. </span><br/>
+            <span>5) This module is tested and working on Odoo vanilla with Ubuntu OS. </span><br/>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12">
+            <h2 class="oe_slogan"><a href="https://support.synconics.com/helpdesk/support-1/submit" style="color: #000000 !important;"> Get Help & Support</a></h2>
+        </div>
+        <div class="oe_slogan oe_spaced text-center">
+            <a class="btn btn-success mt8" title="Get Help !" style="background-color: rgb(31, 16, 140); color: rgb(255, 255, 255) !important; position: relative; overflow: hidden;" href="https://support.synconics.com/helpdesk/support-1/submit"><span class="o_ripple" style="height: 61px; width: 61px; top: -12.9688px; left: -8.76562px;"></span> Help & Support </a>&nbsp;&nbsp;
+            <a class="btn btn-success mt8" title="Request New Features now !" style="background-color: rgb(31, 16, 140); color: rgb(255, 255, 255) !important; position: relative; overflow: hidden;" href="http://www.synconics.com/opensource-erp-implementation-odoo-partner-india-gujarat-ahmedabad-expert-company-contact-us/"> Request New Features </a>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <div class="oe_slogan oe_spaced">
+            <span style="font-size: 20px">Checkout Other Apps Developed By Synconics Technologies <a href="https://apps.odoo.com/apps/modules/browse?search=synconics">Click Here</a></span>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12" style="float: none;">
+            <h2 class="oe_slogan"><a href="http://www.synconics.com/" style="color: #000000 !important;"> Our Services</a></h2>
+        </div>
+        <div class="oe_menu" style="display: flex;justify-content: center;align-items: center;flex-wrap: wrap;">
+            <li class="oe_flex_li" style="flex: 0 0 30%;text-align: left;">
+                <a href="http://www.synconics.com/odoo-opensource-erp-onpremise-cloudhosting-installation-expert/">Odoo ERP Installation</a>
+            </li>
+            <li class="oe_flex_li" style="flex: 0 0 30%;text-align: left;">
+                <a href="http://www.synconics.com/odoo-opensource-erp-version-legacy-system-migration-upgradation-expert/">Odoo ERP Migration</a>
+            </li>
+            <li class="oe_flex_li" style="flex: 0 0 30%;text-align: left;">
+                <a href="http://www.synconics.com/organizational-digital-stratagy-legacy-system-transformation-modernisation/">Digital Stratagy</a>
+            </li>
+
+            <li class="oe_flex_li" style="flex: 0 0 30%;text-align: left;">
+                <a href="http://www.synconics.com/odoo-opensource-erp-module-configuration-setting-expert/">Odoo ERP configuration</a>
+            </li>
+            <li class="oe_flex_li" style="flex: 0 0 30%;text-align: left;">
+                <a href="http://www.synconics.com/odoo-opensource-erp-onsite-onpremise-remote-working-monthly-projectwise-dedicated-functional-technical-expert-resources/">Odoo ERP Staffing</a>
+            </li>
+            <li class="oe_flex_li" style="flex: 0 0 30%;text-align: left;">
+                <a href="http://www.synconics.com/organizational-business-process-reengineering-digital-transformation-system-application-technology-selection/">Digital Technology Selection</a>
+            </li>
+
+            <li class="oe_flex_li" style="flex: 0 0 30%;text-align: left;">
+                <a href="http://www.synconics.com/odoo-opensource-erp-module-customization-expert/">Odoo ERP Customization</a>
+            </li>
+            <li class="oe_flex_li" style="flex: 0 0 30%;text-align: left;">
+                <a href="http://www.synconics.com/odoo-opensource-erp-onpremise-remote-functional-training-by-expert-trainers/">Odoo Functional Training</a>
+            </li>
+            <li class="oe_flex_li" style="flex: 0 0 30%;text-align: left;">
+                <a href="http://www.synconics.com/organisational-digital-transformation-system-application-technology-selection-implementation/">Digital Transformation Implementation</a>
+            </li>
+
+            <li class="oe_flex_li" style="flex: 0 0 30%;text-align: left;">
+                <a href="http://www.synconics.com/odoo-opensource-erp-new-module-product-development-expert/">Odoo ERP New Module Development</a>
+            </li>
+            <li class="oe_flex_li" style="flex: 0 0 30%;text-align: left;">
+                <a href="http://www.synconics.com/odoo-opensource-erp-onpremise-remote-technical-training-by-expert-trainers/">Odoo ERP Technical Training</a>
+            </li>
+            <li class="oe_flex_li" style="flex: 0 0 30%;text-align: left;">
+                <a href="http://www.synconics.com/organizational-business-process-reengineering-digital-transformation-legacy-system-application-technology-migration-modernisation/">Legacy Modernization</a>
+            </li>
+
+            <li class="oe_flex_li" style="flex: 0 0 30%;text-align: left;">
+                <a href="http://www.synconics.com/odoo-opensource-erp-integration-e-commerce-payment-gateway-document-management-shipping-accounting/">Odoo ERP Integrations</a>
+            </li>
+            <li class="oe_flex_li" style="flex: 0 0 30%;text-align: left;">
+                <a href="http://www.synconics.com/odoo-opensource-erp-expert-support-services/">Odoo ERP Support</a>
+            </li>
+            <li class="oe_flex_li" style="flex: 0 0 30%;text-align: left;">
+                <a href="http://www.synconics.com/organizational-business-process-reengineering-digital-transformation/">Organizational Transformation</a>
+            </li>
+
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced text-center">
+        <div class="oe_span12">
+            <span style="font-size: 20px;text-align: right;"><h2 class="oe_slogan"><a href="http://www.synconics.com/" style="color: #000000 !important;"> Our Contact Details</a></h2></span>
+            <span class="o_ripple" style="background-color: rgb(31, 16, 140); color: rgb(255, 255, 255) !important; position: relative; overflow: hidden;height: 61px; width: 61px; top: -12.9688px; font-size: 18px;text-align: right;padding: 6px 12px;border-radius: 4px;border: 1px solid transparent;border-color: #4cae4c;z-index:1;">
+                     E-mail :
+                    <a href="http://www.synconics.com/opensource-erp-implementation-odoo-partner-india-gujarat-ahmedabad-expert-company-contact-us/" style="color: rgb(255, 255, 255) !important;">contact@synconics.com</a> |
+                    Skype : synconics.technologies  |
+                    Mobile : +91-942-686-4274
+
+            </span>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12">
+            <span style="font-size: 20px">For product demo, please generate a ticket and mention your preferred time and date. Please make sure the demo timing you mentioned are as per Indian Standard Time (IST), between 10:30 AM to 7:00 PM (IST), Monday to Friday.</span>
+        </div>
+    </div>
+</section>

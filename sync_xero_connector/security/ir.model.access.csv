@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_xero_account_user,access_xero_account_user,model_xero_account,base.group_user,1,1,1,1
+access_tax_component_user,access_tax_component_user,model_tax_component,base.group_user,1,1,1,1
+access_account_move_line_xero_log_user,access_account_move_line_xero_log_user,model_account_move_line_xero_log,base.group_user,1,1,1,1
+access_mismatch_log,access_mismatch_log,model_mismatch_log,base.group_user,1,1,1,1
+access_product_xero_company,access_product_xero_company,model_product_xero_company,base.group_user,1,1,1,1
+access_contact_xero_company,access_contact_xero_company,model_contact_xero_company,base.group_user,1,1,1,1
+
+access_xero_organization,access_xero_organization,model_xero_organization,base.group_user,1,1,1,1
