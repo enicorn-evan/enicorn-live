@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <menuitem id="menu_xero_main" name="Xero" parent="account.menu_finance_configuration" sequence="1" groups="account.group_account_invoice"/>
+    <menuitem name="Xero Accounts" id="menu_xero_account" parent="menu_xero_main" action="action_xero_account" sequence="1"/>
+    <menuitem id="menu_mismatch_log" name="Mismatch Log" parent="menu_xero_main" action="action_mismatch_log" sequence="2"/>
+</odoo>
