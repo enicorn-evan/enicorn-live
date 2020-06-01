@@ -5,6 +5,11 @@ from odoo import models, fields, api, _
 from odoo.exceptions import UserError
 import itertools
 from odoo.tools import float_round
+import babel.dates
+from dateutil.relativedelta import relativedelta
+import json
+from odoo.tools.misc import get_lang
+from odoo.addons.web.controllers.main import clean_action
 
 
 class ProjectTask(models.Model):
@@ -24,14 +29,12 @@ class ProjectTask(models.Model):
     def create_po_from_task(self):
         """ Create Purchase Order From Task"""
         user = self.env['res.users'].browse(self._uid)
-        warehouse_obj = self.env['stock.warehouse'].search(
-            [('company_id', '=', self.company_id.id)])
         po_lines = []
 
         product_id = self.env['product.product'].create({
             'name': self.name,
             'service_tracking': 'task_global_project',
-            'type': 'product',
+            'type': 'consu',
             'uom_id': self.env.ref('uom.product_uom_unit').id,
         })
 
@@ -51,13 +54,21 @@ class ProjectTask(models.Model):
                 'company_id': self.company_id.id,
                 'date_order': fields.datetime.now(),
                 'partner_id': self.partner_id.id,
-                'picking_type_id': warehouse_obj.in_type_id.id,
                 'user_id': user.id,
                 'order_line': po_lines,
                 'project_id': self.project_id.id,
                 'project_task_id': self.id,
             })
             self.is_create_po = True
+
+            return {
+                'name': _('Purchase Order'),
+                'view_mode': 'form',
+                'view_id': self.env.ref('purchase.purchase_order_form').id,
+                'res_model': 'purchase.order',
+                'type': 'ir.actions.act_window',
+                'res_id': purchase_obj.id,
+            }
 
     def action_view_po(self):
         """ Show All Purchase Order Of This Task """
@@ -230,3 +241,131 @@ class Project(models.Model):
         if timesheet_forecast_table_rows:
             values['timesheet_forecast_table'] = timesheet_forecast_table_rows
         return values
+
+    def _plan_get_stat_button(self):
+        stat_buttons = []
+        if len(self) == 1:
+            edit_project = self.env.ref('project.edit_project')
+            stat_buttons.append({
+                'name': _('Project'),
+                'icon': 'fa fa-puzzle-piece',
+                'action': _to_action_data('project.project', res_id=self.id,
+                                          views=[[edit_project.id, 'form']])
+            })
+        ts_tree = self.env.ref('hr_timesheet.hr_timesheet_line_tree')
+        ts_form = self.env.ref('hr_timesheet.hr_timesheet_line_form')
+        stat_buttons.append({
+            'name': _('Timesheets'),
+            'icon': 'fa fa-calendar',
+            'action': _to_action_data(
+                'account.analytic.line',
+                domain=[('project_id', 'in', self.ids)],
+                views=[(ts_tree.id, 'list'), (ts_form.id, 'form')],
+            )
+        })
+
+        # if only one project, add it in the context as default value
+        tasks_domain = [('project_id', 'in', self.ids)]
+        tasks_context = self.env.context
+
+        # filter out all the projects that have no tasks
+        task_projects_ids = self.env['project.task'].read_group(
+            [('project_id', 'in', self.ids)], ['project_id'], ['project_id'])
+        task_projects_ids = [p['project_id'][0] for p in task_projects_ids]
+
+        if len(task_projects_ids) == 1:
+            tasks_context = {**tasks_context, 'default_project_id': task_projects_ids[0]}
+        stat_buttons.append({
+            'name': _('Tasks'),
+            'count': sum(self.mapped('task_count')),
+            'icon': 'fa fa-tasks',
+            'action': _to_action_data(
+                action=self.env.ref('project.action_view_task'),
+                domain=tasks_domain,
+                context=tasks_context
+            )
+        })
+
+        # task_po_ids = self.env['project.task'].search_read([
+        #     ('project_id', 'in', self.ids), ('purchase_order_id', '!=', False)
+        # ], ['purchase_order_id'])
+        # task_po_ids = [o['purchase_order_id'][0] for o in task_po_ids]
+        # po_orders = self.env['purchase.order'].browse(task_po_ids)
+        # stat_buttons.append({
+        #     'name': _('PO Orders'),
+        #     'count': len(po_orders),
+        #     'icon': 'fa fa-dollar',
+        #     'action': _to_action_data(
+        #         action=self.env.ref('purchase.purchase_rfq'),
+        #         domain=[('id', 'in', po_orders.ids)],
+        #         context={'create': False,
+        #                  'edit': False, 'delete': False}
+        #     )
+        # })
+
+        if self.env.user.has_group('sales_team.group_sale_salesman_all_leads'):
+            # read all the sale orders linked to the projects' tasks
+            task_so_ids = self.env['project.task'].search_read([
+                ('project_id', 'in', self.ids), ('sale_order_id', '!=', False)
+            ], ['sale_order_id'])
+            task_so_ids = [o['sale_order_id'][0] for o in task_so_ids]
+
+            sale_orders = self.mapped('sale_line_id.order_id') | self.env[
+                'sale.order'].browse(task_so_ids)
+            if sale_orders:
+                stat_buttons.append({
+                    'name': _('Sales Orders'),
+                    'count': len(sale_orders),
+                    'icon': 'fa fa-dollar',
+                    'action': _to_action_data(
+                        action=self.env.ref('sale.action_orders'),
+                        domain=[('id', 'in', sale_orders.ids)],
+                        context={'create': False,
+                                 'edit': False, 'delete': False}
+                    )
+                })
+
+                invoice_ids = self.env['sale.order'].search_read(
+                    [('id', 'in', sale_orders.ids)], ['invoice_ids'])
+                invoice_ids = list(itertools.chain(
+                    *[i['invoice_ids'] for i in invoice_ids]))
+                invoice_ids = self.env['account.move'].search_read(
+                    [('id', 'in', invoice_ids), ('type', '=', 'out_invoice')], ['id'])
+                invoice_ids = list(map(lambda x: x['id'], invoice_ids))
+
+                if invoice_ids:
+                    stat_buttons.append({
+                        'name': _('Invoices'),
+                        'count': len(invoice_ids),
+                        'icon': 'fa fa-pencil-square-o',
+                        'action': _to_action_data(
+                            action=self.env.ref(
+                                'account.action_move_out_invoice_type'),
+                            domain=[('id', 'in', invoice_ids),
+                                    ('type', '=', 'out_invoice')],
+                            context={'create': False, 'delete': False}
+                        )
+                    })
+
+        return stat_buttons
+
+
+def _to_action_data(model=None, *, action=None, views=None, res_id=None, domain=None, context=None):
+    # pass in either action or (model, views)
+    if action:
+        assert model is None and views is None
+        act = clean_action(action.read()[0])
+        model = act['res_model']
+        views = act['views']
+    # FIXME: search-view-id, possibly help?
+    descr = {
+        'data-model': model,
+        'data-views': json.dumps(views),
+    }
+    if context is not None:  # otherwise copy action's?
+        descr['data-context'] = json.dumps(context)
+    if res_id:
+        descr['data-res-id'] = res_id
+    elif domain:
+        descr['data-domain'] = json.dumps(domain)
+    return descr

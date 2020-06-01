@@ -8,7 +8,7 @@
     'version': '13.0',
     'author': 'Key Concepts',
     'website': 'http://keyconcepts.co.in',
-    'depends': ['project', 'purchase', 'stock', 'sale_timesheet'],
+    'depends': ['project', 'purchase', 'sale_timesheet'],
     'data': [
         'views/purchase_order_view.xml',
         'views/project_view.xml',
