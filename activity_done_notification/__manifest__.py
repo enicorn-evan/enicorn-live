@@ -1,6 +1,6 @@
 {
     'name': 'Activity Done Notification',
-    'version': '13.0',
+    'version': '13.0.1',
     'category': 'Mail Notification',
     'license': 'OPL-1',
     'summary': 'Notify assigner when assignee marks activity done.',
