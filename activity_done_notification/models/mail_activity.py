@@ -23,6 +23,7 @@ class MailActivityExt(models.Model):
                     feedback=feedback,
                     model_description=model_description,
                     email_layout_xmlid='mail.mail_notification_light',
+                    email_from=self.env.user.company_id.email,
                 )
         return super(MailActivityExt, self)._action_done(feedback=feedback, attachment_ids=attachment_ids)
 
