@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+	    <template id="report_invoice_discount_inherit" inherit_id="account.report_invoice_document">
+    	
+
+    	<xpath expr="//div[hasclass('clearfix')]/div/div/table/tr" position="after">
+    			<t t-if="o.type in ('out_invoice','out_refund','out_receipt')">
+    				<tr>
+						<td>Discount Amount</td>
+							<td class="text-right">
+								<span t-field="o.discount_amt"/>
+							</td>
+					</tr>
+				</t>
+			</xpath>	
+		</template>
+	</data>
+</odoo>				
+    	

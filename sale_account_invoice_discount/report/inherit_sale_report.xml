@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+	<template id="report_sale_discount_inherit" inherit_id="sale.report_saleorder_document">
+				<xpath expr="//div[hasclass('clearfix')]/div/div/table" position="replace">
+							<table class="table table-condensed">
+								<tr class="border-black">
+									<td>Untaxed Amount</td>
+										<td class="text-right">
+											<span t-field="doc.amount_untaxed" />
+										</td>
+									</tr>
+								<tr>
+									<td>Discount Amount</td>
+									<td class="text-right">
+										<span t-field="doc.discount_amt"/>
+									</td>
+								</tr>
+								<tr>
+									<td>Taxes</td>
+									<td class="text-right">
+										<span t-field="doc.amount_tax"
+											t-field-options='{"widget": "monetary", "display_currency": "doc.pricelist_id.currency_id"}' />
+									</td>
+								</tr>
+								<tr class="border-black">
+									<td>
+										<strong>Total</strong>
+									</td>
+									<td class="text-right">
+										<span t-field="doc.amount_total"
+											t-field-options='{"widget": "monetary", "display_currency": "doc.pricelist_id.currency_id"}' />
+									</td>
+								</tr>
+							</table>
+					</xpath>
+    	</template>
+	</data>
+</odoo>
