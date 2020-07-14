@@ -38,7 +38,7 @@ class ResCurrency(models.Model):
 
     def compute(self, from_amount, to_currency, round=True):
         """ Convert `from_amount` from currency `self` to `to_currency`. """
-        company = self.env['res.company'].browse(self._context.get('company_id')) or self.env['res.users']._get_company()
+        company = self.env['res.company'].browse(self._context.get('company_id')) or self.env.company
         date = self._context.get('date') or fields.Date.today()
         self, to_currency = self or to_currency, to_currency or self
         assert self, "compute from unknown currency"

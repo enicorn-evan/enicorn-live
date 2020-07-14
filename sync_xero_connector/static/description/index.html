@@ -34,6 +34,19 @@
 </section>
 
 <section class="oe_container">
+    <div class="oe_row">
+        <h2 class="oe_slogan" style="color:#875A7B;">
+            <img src="notes.gif" height="90px" width="90px"/>
+             Notes
+        </h2>
+        <div class="oe_span12" style="font-size: large;">
+            <p>This module supports Xero oAuth API 1.0 as well as 2.0 This module is for those customers who wants to freshly start their Xero Integration with Odoo.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
     <div class="oe_row oe_spaced">
         <div class="oe_span12">
             <h2 class="oe_slogan"><img src="new.gif" height="90px" width="90px"/>Now supports OAuth 2.0 types of Xero Applications</h2>
@@ -64,260 +77,583 @@
     </div>
 </section>
 
-<section class="oe_container">
-    <div class="oe_row">
-        <h2 class="oe_slogan" style="color:#875A7B;">
-            <img src="question.png" height="45px" width="45px"/> How Xero Integration works
-        </h2>
-        <div class="oe_span12" style="font-size: large;">
-            <p>Integration with Xero works both ways and can be set either as manual or automatic. All you need to do is configure, which data you would like to synchronize.<br/><br/>Instead of creating different Odoo instance for each Xero organization (account), you can connect multiple Xero organizations (accounts) to one Odoo instance. So, if your Odoo instance has multiple company accounts, you can now connect each account to a different Xero organization (account). This way all data on your companies are in one place.<br/><br/>
-            </p>
+<section style="margin: 15px;background-color: #fff;padding: 15px;margin-top: 15px;border: 1px solid #0e353a;">
+    <ul role="tablist" class="nav nav-pills justify-content-center mt-3" data-tabs="tabs" id="pills-tab" style="border: none;background: unset;position: relative;">
+        <li class="nav-item mr-1 mb-3" style="border-bottom: 3px solid #00717c;background-color: #ec870a;color: #fff;    border-bottom: 3px solid #00353a;width: 40%;text-align: center;margin-right: 30px !important;">
+            <a id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true" class="nav-link active show" style="font-family: 'Montserrat', sans-serif;text-transform: uppercase;font-weight: 600;font-size: 20px;letter-spacing: 1px;padding: 10px 20px;color: #fff;background-color: transparent;">Xero Integration
+            </a>
+        </li>
+        <li class="nav-item mr-1 mb-3" style="border-bottom: 3px solid #00353a;background-color: #ec870a;color: #fff;width: 40%;text-align: center;">
+            <a id="pills-releases-tab" data-toggle="pill" href="#pills-releases" role="tab" aria-controls="pills-releases" aria-selected="false" class="nav-link" style="font-family: 'Montserrat', sans-serif;text-transform: uppercase;font-weight: 600;font-size: 20px;letter-spacing: 1px;padding: 10px 20px;color: #fff;background-color: transparent;">FAQ
+            </a>
+        </li>
+        <div class="tab-line" style="border-bottom: 4px solid #00353a;width: 95%;bottom: 10px;position: absolute;box-shadow: 0px 4px 4px 0px #dcd8d8;" />
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+        <div class="px-3 pt-1 tab-pane fade active show" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <section class="oe_container">
+                <div class="oe_row">
+                    <h2 class="oe_slogan" style="color:#875A7B;">
+                        <img src="question.png" height="45px" width="45px"/> How Xero Integration works
+                    </h2>
+                    <div class="oe_span12" style="font-size: large;">
+                        <p>Integration with Xero works both ways and can be set either as manual or automatic. All you need to do is configure, which data you would like to synchronize.<br/><br/>Instead of creating different Odoo instance for each Xero organization (account), you can connect multiple Xero organizations (accounts) to one Odoo instance. So, if your Odoo instance has multiple company accounts, you can now connect each account to a different Xero organization (account). This way all data on your companies are in one place.<br/><br/>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="oe_container">
+                <div class="oe_row">
+                    <h2 class="oe_slogan" style="color:#875A7B;">
+                        <img src="Startup_Rocket-512.png" height="45px" width="45px"/> Boosted up the speed for API calling for import/export operations
+                    </h2>
+                    <div class="oe_span12" style="font-size: large;">
+                        <p>Use pagination to retrieve 100 data at a time. Endpoints that currently support pagination are invoices, credit notes, contacts and manual journals.<br/><br/>
+                        Use batches for put 50 data at a time. Endpoints that currently support batches are invoices, credit notes, contacts.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!--Third block -->
+            <section class="oe_container">
+                <div class="oe_row">
+                    <h2 class="oe_slogan" style="color:#875A7B;">
+                        <img src="sign-sync-icon.png" height="45px" width="45px"/> What is synced
+                    </h2>
+                    <div class="oe_span12" style="font-size: large;">
+                        <div><img src="import.png" height="45px" width="45px"/><strong style="font-weight: bold;"> Import (Xero to Odoo)</strong></div><br/>
+                        <ul style="list-style-type:square">
+                            <li><strong style="font-weight: bold;">Currencies</strong>: Pulled from Xero with the initial sync and create a new currency in Odoo if not available.</li>
+                            <li><strong style="font-weight: bold;">Chart Of Accounts</strong>: Chart Of Accounts in Odoo. Chart of Accounts is pulled from Xero with the initial sync. </li>
+                            <li><strong style="font-weight: bold;">Taxes / Tax Rates</strong>: Pulled from Xero with the initial sync. Any changes in Tax Rates in Xero are synced to Odoo.</li>
+                            <li><strong style="font-weight: bold;">Contact Groups / Contact Tags</strong>: Pulled from Xero with the initial sync and create new Contact Tags in Odoo.</li>
+                            <li><strong style="font-weight: bold;">Contacts (Suppliers / Customers)</strong>: All contacts which are stored in Xero, it could be Supplier or Customer.</li>
+                            <li><strong style="font-weight: bold;">Bank Accounts</strong>: Accounts with bank type (not bank transaction and other details).</li>
+                            <li><strong style="font-weight: bold;">Manual Journal</strong>: All type of manual journal, which is recorded directly in Xero.</li>
+                            <li><strong style="font-weight: bold;">Items / Products</strong>: Products with its details (sale price, cost price, accounts, taxes etc), Also manage tracked and Untracked Products.</li>
+                            <li><strong style="font-weight: bold;">Invoices</strong>: Customer Invoices with taxes. Also, create payment lines in Odoo if an invoice is paid fully or partially in Xero.</li>
+                            <li><strong style="font-weight: bold;">Bills</strong>: Bills with taxes. Also, create payment lines in Odoo if bills are paid fully or partially in Xero.</li>
+                            <li><strong style="font-weight: bold;">Credit Note (ACCRECCREDIT)</strong>: An Account Receivable (customer) Credit Note with payment and allocations.</li>
+                            <li><strong style="font-weight: bold;">Credit Note (ACCPAYCREDIT)</strong>: An Accounts Payable (supplier) Credit Note with payment and allocations.</li>
+                        </ul>
+
+                        <strong style="color: red; font-weight: bold;">Note:</strong> As Xero API doesn't provide the tracking for credit note allocation, So when Credit Note goes in paid stage on Xero then allocation will be applied in Odoo.
+                        <br/><br/>
+                        <table class="table">
+                          <thead class="thead-dark">
+                            <tr>
+                              <th scope="col" style="background-color: #875A7B; border-color: #875A7B;">#</th>
+                              <th scope="col" style="background-color: #875A7B; border-color: #875A7B;">Objects</th>
+                              <th scope="col" style="background-color: #875A7B; border-color: #875A7B;"><center>OAuth2.0</center></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th scope="row">1</th>
+                              <td>Currencies</td>
+                              <td><center><i class="fa fa-check"/></center></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">2</th>
+                              <td>Taxes</td>
+                              <td><center><i class="fa fa-check"/></center></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">3</th>
+                              <td>Chart of Accounts</td>
+                              <td><center><i class="fa fa-check"/></center></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">4</th>
+                              <td>Manual Journals</td>
+                              <td><center><i class="fa fa-check"/></center></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">5</th>
+                              <td>Bank Accounts</td>
+                              <td><center><i class="fa fa-check"/></center></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">6</th>
+                              <td>Contact Groups</td>
+                              <td><center><i class="fa fa-check"/></center></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">7</th>
+                              <td>Contacts</td>
+                              <td><center><i class="fa fa-check"/></center></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">8</th>
+                              <td>Products (Tracked / Untracked)</td>
+                              <td><center><i class="fa fa-check"/></center></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">9</th>
+                              <td>Invoices / Bills</td>
+                              <td><center><i class="fa fa-check"/></center></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">10</th>
+                              <td>Credit Notes</td>
+                              <td><center><i class="fa fa-check"/></center></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">11</th>
+                              <td>Invoice / Bill Payments</td>
+                              <td><center><i class="fa fa-check"/></center></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">12</th>
+                              <td>Credit Notes Payments / Allocation</td>
+                              <td><center><i class="fa fa-check"/></center></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section class="oe_container">
+                <div class="oe_row">
+                    <div class="oe_span12" style="font-size: large;">
+                        <div><img src="export.png" height="45px" width="45px"/><strong style="font-weight: bold;"> Export (Odoo to Xero)</strong></div><br/>
+                        <ul style="list-style-type:square">
+                            <li><strong style="font-weight: bold;">Chart Of Accounts</strong>: Chart Of Accounts in Xero. Chart of Accounts is created in Xero with the initial sync.</li>
+                            <li><strong style="font-weight: bold;">Taxes / Tax Rates</strong>: Tax Rates in Xero. Tax rates are created in Xero with the initial sync.</li>
+                            <li><strong style="font-weight: bold;">Contact Groups / Contact Tags</strong>: All Contact Tags of Odoo will be created as Contact Groups in Xero.</li>
+                            <li><strong style="font-weight: bold;">Contacts (Suppliers / Customers)</strong>: All contacts which are stored in Odoo, whether Customer or Supplier.</li>
+                            <li><strong style="font-weight: bold;">Bank Accounts</strong>: Accounts with bank type.</li>
+                            <li><strong style="font-weight: bold;">Items / Products</strong>: Products with its details (sale price, cost price, accounts, taxes etc), Also manage tracked and Untracked Products.</li>
+                            <li><strong style="font-weight: bold;">Invoices</strong>: Customer Invoice with tax. Also, create a payment in Xero if an invoice is paid fully or partially in Odoo.</li>
+                            <li><strong style="font-weight: bold;">Bills</strong>: Bills with tax. Also, create a payment in Xero if bills are paid fully or partially in Odoo.</li>
+                            <li><strong style="font-weight: bold;">Credit Note (ACCRECCREDIT)</strong>: An Account Receivable (customer) Credit Note with payment and allocations.</li>
+                            <li><strong style="font-weight: bold;">Credit Note (ACCPAYCREDIT)</strong>: An Accounts Payable (supplier) Credit Note with payment and allocations.</li>
+                            <li><strong style="font-weight: bold;">Inventory Adjustment</strong>: For tracked product, if qty will be increasing or decreasing in Odoo using an option like (Buying and selling inventory - bills and invoices, By Inventory adjustment, By Manufacturing process) it will be reflected in Xero.</li>
+                            <li><strong style="font-weight: bold;">Attachment</strong>: Attachments of Invoice/Vendor Bill will be sent to Xero.</li>
+                        </ul>
+                        <strong style="color: red; font-weight: bold;">Note:</strong> You can either Import or Export Credit Note based on configuration.
+                        <br/><br/>
+                        <table class="table">
+                          <thead class="thead-dark">
+                            <tr>
+                              <th scope="col" style="background-color: #875A7B; border-color: #875A7B;">#</th>
+                              <th scope="col" style="background-color: #875A7B; border-color: #875A7B;">Objects</th>
+                              <th scope="col" style="background-color: #875A7B; border-color: #875A7B;"><center>OAuth2.0</center></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th scope="row">1</th>
+                              <td>Taxes</td>
+                              <td><center><i class="fa fa-check"/></center></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">2</th>
+                              <td>Chart of Accounts</td>
+                              <td><center><i class="fa fa-check"/></center></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">3</th>
+                              <td>Bank Accounts</td>
+                              <td><center><i class="fa fa-check"/></center></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">4</th>
+                              <td>Contact Groups</td>
+                              <td><center><i class="fa fa-check"/></center></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">5</th>
+                              <td>Contacts</td>
+                              <td><center><i class="fa fa-check"/></center></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">6</th>
+                              <td>Products</td>
+                              <td><center><i class="fa fa-check"/></center></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">7</th>
+                              <td>Invoices/ Bills</td>
+                              <td><center><i class="fa fa-check"/></center></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">8</th>
+                              <td>Credit Notes</td>
+                              <td><center><i class="fa fa-check"/></center></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">9</th>
+                              <td>Invoices/ Bills</td>
+                              <td><center><i class="fa fa-check"/></center></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">10</th>
+                              <td>Invoice / Bill Payments</td>
+                              <td><center><i class="fa fa-check"/></center></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">11</th>
+                              <td>Credit Notes Payments / Allocation</td>
+                              <td><center><i class="fa fa-check"/></center></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">12</th>
+                              <td>Inventory Adjustments</td>
+                              <td><center><i class="fa fa-check"/></center></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">13</th>
+                              <td>Invoice Attachments</td>
+                              <td><center><i class="fa fa-check"/></center></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">14</th>
+                              <td>Credit Notes Attachments</td>
+                              <td><center><i class="fa fa-check"/></center></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">15</th>
+                              <td>Contact Attachments</td>
+                              <td><center><i class="fa fa-check"/></center></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!--Fifth block -->
+            <section class="oe_container">
+                <div class="oe_row">
+                    <div class="oe_span12" style="color:#875A7B;">
+                        <h2 class="oe_slogan"><img src="document-file-icon.png" height="45px" width="45px"/> Xero setup guide</h2>
+                    </div>
+                    <div class="oe_span12" style="font-size: large;">
+                        <div>You will also find a full documentation with all screenshots for example</div>
+                        <div>1 - How to configure Xero OAuth 1.0</div>
+                        <div>2 - How to configure Xero OAuth 2.0</div>
+                        <div>3 - How to configure Xero and Odoo Accounts?</div>
+                        <div>4 - Import and Export Operations</div>
+                        <div>You will find user_guide.pdf document in <strong>doc</strong> directory inside the module</div>
+                        <div>
+                            <strong style="color: red;">Note: </strong> For Odoo.sh we have added installation steps in documentation, but if you need more then, we will provide you more support once you purchase support hours from us.
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="oe_container">
+                <div class="oe_row">
+                    <div class="oe_span12" style="font-size: large;">
+                        <h2 class="oe_slogan"><img src="disclaimer-icon.png" height="45px" width="45px"/> Disclaimer</h2>
+                    </div>
+                    <div class="oe_span12" style="font-size: large;">
+                        Whenever there is a change in API from Xero or change in related Odoo objects you can contact us to look into it.
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="px-3 pt-1 tab-pane fade" id="pills-releases" role="tabpanel" aria-labelledby="pills-releases-tab">
+            <section class="oe_container" style="font-family: Montserrat;">
+                <div>
+                    <div style="background-color: #fff;color: #fff;margin: 0 15px;">
+                    <h2 class="oe_slogan" style="color: #75526c;padding-top: 30px;margin-top:0px;">Xero Connector (OAuth 2.0) FAQs</h2>
+                    <div style="border-bottom: 2px solid #FFF; width: 20%; margin: 0 auto"></div>
+                    </div>
+                    <div class="oe_menu" style="display: flex;justify-content: center;align-items: center;flex-wrap: wrap;background-color: #fff;color: #75526c;padding-bottom:30px;margin: 0 15px;">
+                        <li class="oe_flex_li" style="flex: 0 0 90%;text-align: left;font-size: 15px;font-family: Montserrat;font-size: 18px;list-style: none;margin-top: 10px;">
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">1</span>
+                            <span>I am just not clear on the account mapping on both ends. so, for example, our Odoo is vanilla, but we have products in there.
+                            does this mean that once we import the chart of accounts from Xero, we need to remap? </span><br />
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">-></span>
+                            <span>As for different countries, Xero maintains different kinds of charts of accounts and if some Chart of Accounts and Taxes names will be same at Odoo side also then we have to, first of all, rename them and then we will be able to map Chart of Accounts and Tax again for Import or an Export process
+                            So basically it is a one-time mapping process only, you do not have to map Charts of Accounts and Taxes each and every time.</span>
+                        </li>
+                        <li class="oe_flex_li" style="flex: 0 0 90%;text-align: left;font-size: 15px;font-family: Montserrat;font-size: 18px;list-style: none;margin-top: 10px;">
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">2</span>
+                            <span>Can I Import and Export Vendor Bills also? </span><br />
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">-></span>
+                            <span>Yes you can also import and export Vendor Bills.</span>
+                        </li>
+                        <li class="oe_flex_li" style="flex: 0 0 90%;text-align: left;font-size: 15px;font-family: Montserrat;font-size: 18px;list-style: none;margin-top: 10px;">
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">3</span>
+                            <span>Are all Vendor Bills and Invoices marked as drafts when imported across? even historic? </span><br />
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">-></span>
+                            <span>No, we have also mapped stages for Customer Invoices and Vendor Bills here, so basically while Import and Export process system will also map stages and display records only on those relevant stages at Odoo side.</span>
+                        </li>
+                        <li class="oe_flex_li" style="flex: 0 0 90%;text-align: left;font-size: 15px;font-family: Montserrat;font-size: 18px;list-style: none;margin-top: 10px;">
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">4</span>
+                            <span>Does your module provide an automatic import and export process without manual intervention? </span><br />
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">-></span>
+                            <span>Yes, we have also provided automated schedulers here for import and export process automatically at the given time duration.</span>
+                        </li>
+                        <li class="oe_flex_li" style="flex: 0 0 90%;text-align: left;font-size: 15px;font-family: Montserrat;font-size: 18px;list-style: none;margin-top: 10px;">
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">5</span>
+                            <span>Does your module provide automatic Import and Export functionality? </span><br />
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">-></span>
+                            <span>Yes we have provided automated schedulers to automate import and export functionality.</span>
+                        </li>
+                        <li class="oe_flex_li" style="flex: 0 0 90%;text-align: left;font-size: 15px;font-family: Montserrat;font-size: 18px;list-style: none;margin-top: 10px;">
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">6</span>
+                            <span>Does your module support a multi-company scenario? </span><br />
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">-></span>
+                            <span>Yes, our module supports multi-company scenario, you can configure different Xero Accounts for different companies here.</span>
+                        </li>
+                        <li class="oe_flex_li" style="flex: 0 0 90%;text-align: left;font-size: 15px;font-family: Montserrat;font-size: 18px;list-style: none;margin-top: 10px;">
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">7</span>
+                            <span>Does your module support Mismatch Logs or Mismatch Historical Data? </span><br />
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">-></span>
+                            <span>Yes, our module supports Mismatch Logs when any serious warning prompts users to do import and export operation, you can find basic details from created Mismatch Logs lines.</span>
+                        </li>
+                        <li class="oe_flex_li" style="flex: 0 0 90%;text-align: left;font-size: 15px;font-family: Montserrat;font-size: 18px;list-style: none;margin-top: 10px;">
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">8</span>
+                            <span>Do you have full documentation for this module? </span><br />
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">-></span>
+                            <span>When you will purchase this module then you will find a complete PDF guide with every import and export operations with Screenshots in detail.<br/>
+                            For the complete functional flow of our module, you can refer to this index file or see our functional video</span>
+                        </li>
+                        <li class="oe_flex_li" style="flex: 0 0 90%;text-align: left;font-size: 15px;font-family: Montserrat;font-size: 18px;list-style: none;margin-top: 10px;">
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">9</span>
+                            <span>I want to process inventory adjustments automatically at Odoo side. </span><br />
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">-></span>
+                            <span>We have provided this functionality by default for Import Operations and Custom functionality for Export Operations as well</span>
+                        </li>
+                        <li class="oe_flex_li" style="flex: 0 0 90%;text-align: left;font-size: 15px;font-family: Montserrat;font-size: 18px;list-style: none;margin-top: 10px;">
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">10</span>
+                            <span>I have so much amount of data as well as Customer Invoices and Vendor Bills in my Xero Account, is your module capable to import and export so much amount of data? </span><br />
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">-></span>
+                            <span>Yes, we have optimized and developed this module in such a way so that it will also work with a huge amount of data. We have boosted up the speed for API calling for import/export operations, you can also see this section in the starting of this Index file, you can find detailed information from there also.</span>
+                        </li>
+                        <li class="oe_flex_li" style="flex: 0 0 90%;text-align: left;font-size: 15px;font-family: Montserrat;font-size: 18px;list-style: none;margin-top: 10px;">
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">11</span>
+                            <span>What are Mismatch Logs ? </span><br />
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">-></span>
+                            <span>Here we have provided mismatch logs details. It contains details of all record process which has found mismatch while import/export data.</span>
+                        </li>
+                        <li class="oe_flex_li" style="flex: 0 0 90%;text-align: left;font-size: 15px;font-family: Montserrat;font-size: 18px;list-style: none;margin-top: 10px;">
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">12</span>
+                            <span>I or my client just wants import operations, he/she doesn't want export operations or vice versa. </span><br />
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">-></span>
+                            <span>Yes, you can disable or archive Export Scheduler so that system will not do export operations from Odoo to Xero or vice versa.</span>
+                        </li>
+                        <li class="oe_flex_li" style="flex: 0 0 90%;text-align: left;font-size: 15px;font-family: Montserrat;font-size: 18px;list-style: none;margin-top: 10px;">
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">13</span>
+                            <span>Justify me this Scenario - I have not imported the newly created Customer/Vendor from Xero to Odoo till now, now I have created an Invoice/Vendor Bill from the Xero side for that related Customer and directly imported Invoice from Xero to Odoo, now How Odoo will react then? </span><br />
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">-></span>
+                            <span>We have developed our module in such a way so that when any Entity is dependent on another Entity and while doing operations directly for second entity then the system will find all dependencies for that record and automatically create them.</span>
+                        </li>
+                        <li class="oe_flex_li" style="flex: 0 0 90%;text-align: left;font-size: 15px;font-family: Montserrat;font-size: 18px;list-style: none;margin-top: 10px;">
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">14</span>
+                            <span>I have so many Invoices created at Xero side so when I will import them to Odoo, will my system create any error or hang? </span><br />
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">-></span>
+                            <span>Absolutely No, with our optimized code and pagination techniques, we have already tested this module for huge amounts of data so no need to get panic for it.</span>
+                        </li>
+                        <li class="oe_flex_li" style="flex: 0 0 90%;text-align: left;font-size: 15px;font-family: Montserrat;font-size: 18px;list-style: none;margin-top: 10px;">
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">15</span>
+                            <span>We have seen your module, We want some additional customization in your module according to my or my client's requirements, how can I proceed? </span><br />
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">-></span>
+                            <span>Of course, our experienced developer team is ready for any kind of customization.<br/>
+                            kindly E-mail us your requirements on contact@synconics.com<br/>
+                            You can also ping us on our Skype Account - synconics.technologies
+                            </span>
+                        </li>
+                        <li class="oe_flex_li" style="flex: 0 0 90%;text-align: left;font-size: 15px;font-family: Montserrat;font-size: 18px;list-style: none;margin-top: 10px;">
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">16</span>
+                            <span>I want to see Live Preview for this module related functionality </span><br />
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">-></span>
+                            <span>Sure, kindly E-mail us your requirements on contact@synconics.com<br/>
+                            You can also ping us on our Skype Account - synconics.technologies
+                            </span>
+                        </li>
+                        <li class="oe_flex_li" style="flex: 0 0 90%;text-align: left;font-size: 15px;font-family: Montserrat;font-size: 18px;list-style: none;margin-top: 10px;">
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">17</span>
+                            <span> I want to talk with you regarding commercial or other terms and conditions and Support </span><br />
+                            <span style="
+                                display: inline-block;
+                                font-size: 30px;
+                                padding: 0 10px;
+                                font-weight: bold;
+                            ">-></span>
+                            <span>At the bottom of this Index file there is a section named Free Support in which we have clarified our terms and conditions, you can refer to that<br/>
+                            If you will have still any query then kindly E-mail us on contact@synconics.com<br/>
+                            You can also ping us on our Skype Account - synconics.technologies
+                            </span>
+                        </li>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
 </section>
 
-<section class="oe_container">
-    <div class="oe_row">
-        <h2 class="oe_slogan" style="color:#875A7B;">
-            <img src="Startup_Rocket-512.png" height="45px" width="45px"/> Boosted up the speed for API calling for import/export operations
-        </h2>
-        <div class="oe_span12" style="font-size: large;">
-            <p>Use pagination to retrieve 100 data at a time. Endpoints that currently support pagination are invoices, credit notes, contacts and manual journals.<br/><br/>
-            Use batches for put 50 data at a time. Endpoints that currently support batches are invoices, credit notes, contacts.
-            </p>
-        </div>
-    </div>
-</section>
-
-<!--Third block -->
-<section class="oe_container">
-    <div class="oe_row">
-        <h2 class="oe_slogan" style="color:#875A7B;">
-            <img src="sign-sync-icon.png" height="45px" width="45px"/> What is synced
-        </h2>
-        <div class="oe_span12" style="font-size: large;">
-            <div><img src="import.png" height="45px" width="45px"/><strong style="font-weight: bold;"> Import (Xero to Odoo)</strong></div><br/>
-            <ul style="list-style-type:square">
-                <li><strong style="font-weight: bold;">Currencies</strong>: Pulled from Xero with the initial sync and create a new currency in Odoo if not available.</li>
-                <li><strong style="font-weight: bold;">Chart Of Accounts</strong>: Chart Of Accounts in Odoo. Chart of Accounts is pulled from Xero with the initial sync. </li>
-                <li><strong style="font-weight: bold;">Taxes / Tax Rates</strong>: Pulled from Xero with the initial sync. Any changes in Tax Rates in Xero are synced to Odoo.</li>
-                <li><strong style="font-weight: bold;">Contact Groups / Contact Tags</strong>: Pulled from Xero with the initial sync and create new Contact Tags in Odoo.</li>
-                <li><strong style="font-weight: bold;">Contacts (Suppliers / Customers)</strong>: All contacts which are stored in Xero, it could be Supplier or Customer.</li>
-                <li><strong style="font-weight: bold;">Bank Accounts</strong>: Accounts with bank type (not bank transaction and other details).</li>
-                <li><strong style="font-weight: bold;">Manual Journal</strong>: All type of manual journal, which is recorded directly in Xero.</li>
-                <li><strong style="font-weight: bold;">Items / Products</strong>: Products with its details (sale price, cost price, accounts, taxes etc), Also manage tracked and Untracked Products.</li>
-                <li><strong style="font-weight: bold;">Invoices</strong>: Customer Invoices with taxes. Also, create payment lines in Odoo if an invoice is paid fully or partially in Xero.</li>
-                <li><strong style="font-weight: bold;">Bills</strong>: Bills with taxes. Also, create payment lines in Odoo if bills are paid fully or partially in Xero.</li>
-                <li><strong style="font-weight: bold;">Credit Note (ACCRECCREDIT)</strong>: An Account Receivable (customer) Credit Note with payment and allocations.</li>
-                <li><strong style="font-weight: bold;">Credit Note (ACCPAYCREDIT)</strong>: An Accounts Payable (supplier) Credit Note with payment and allocations.</li>
-            </ul>
-
-            <strong style="color: red; font-weight: bold;">Note:</strong> As Xero API doesn't provide the tracking for credit note allocation, So when Credit Note goes in paid stage on Xero then allocation will be applied in Odoo.
-            <br/><br/>
-            <table class="table">
-              <thead class="thead-dark">
-                <tr>
-                  <th scope="col" style="background-color: #875A7B; border-color: #875A7B;">#</th>
-                  <th scope="col" style="background-color: #875A7B; border-color: #875A7B;">Objects</th>
-                  <th scope="col" style="background-color: #875A7B; border-color: #875A7B;"><center>OAuth2.0</center></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Currencies</td>
-                  <td><center><i class="fa fa-check"/></center></td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Taxes</td>
-                  <td><center><i class="fa fa-check"/></center></td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Chart of Accounts</td>
-                  <td><center><i class="fa fa-check"/></center></td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>Manual Journals</td>
-                  <td><center><i class="fa fa-check"/></center></td>
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>Bank Accounts</td>
-                  <td><center><i class="fa fa-check"/></center></td>
-                </tr>
-                <tr>
-                  <th scope="row">6</th>
-                  <td>Contact Groups</td>
-                  <td><center><i class="fa fa-check"/></center></td>
-                </tr>
-                <tr>
-                  <th scope="row">7</th>
-                  <td>Contacts</td>
-                  <td><center><i class="fa fa-check"/></center></td>
-                </tr>
-                <tr>
-                  <th scope="row">8</th>
-                  <td>Products (Tracked / Untracked)</td>
-                  <td><center><i class="fa fa-check"/></center></td>
-                </tr>
-                <tr>
-                  <th scope="row">9</th>
-                  <td>Invoices / Bills</td>
-                  <td><center><i class="fa fa-check"/></center></td>
-                </tr>
-                <tr>
-                  <th scope="row">10</th>
-                  <td>Credit Notes</td>
-                  <td><center><i class="fa fa-check"/></center></td>
-                </tr>
-                <tr>
-                  <th scope="row">11</th>
-                  <td>Invoice / Bill Payments</td>
-                  <td><center><i class="fa fa-check"/></center></td>
-                </tr>
-                <tr>
-                  <th scope="row">12</th>
-                  <td>Credit Notes Payments / Allocation</td>
-                  <td><center><i class="fa fa-check"/></center></td>
-                </tr>
-              </tbody>
-            </table>
-        </div>
-    </div>
-</section>
-
-<section class="oe_container">
-    <div class="oe_row">
-        <div class="oe_span12" style="font-size: large;">
-            <div><img src="export.png" height="45px" width="45px"/><strong style="font-weight: bold;"> Export (Odoo to Xero)</strong></div><br/>
-            <ul style="list-style-type:square">
-                <li><strong style="font-weight: bold;">Chart Of Accounts</strong>: Chart Of Accounts in Xero. Chart of Accounts is created in Xero with the initial sync.</li>
-                <li><strong style="font-weight: bold;">Taxes / Tax Rates</strong>: Tax Rates in Xero. Tax rates are created in Xero with the initial sync.</li>
-                <li><strong style="font-weight: bold;">Contact Groups / Contact Tags</strong>: All Contact Tags of Odoo will be created as Contact Groups in Xero.</li>
-                <li><strong style="font-weight: bold;">Contacts (Suppliers / Customers)</strong>: All contacts which are stored in Odoo, whether Customer or Supplier.</li>
-                <li><strong style="font-weight: bold;">Bank Accounts</strong>: Accounts with bank type.</li>
-                <li><strong style="font-weight: bold;">Items / Products</strong>: Products with its details (sale price, cost price, accounts, taxes etc), Also manage tracked and Untracked Products.</li>
-                <li><strong style="font-weight: bold;">Invoices</strong>: Customer Invoice with tax. Also, create a payment in Xero if an invoice is paid fully or partially in Odoo.</li>
-                <li><strong style="font-weight: bold;">Bills</strong>: Bills with tax. Also, create a payment in Xero if bills are paid fully or partially in Odoo.</li>
-                <li><strong style="font-weight: bold;">Credit Note (ACCRECCREDIT)</strong>: An Account Receivable (customer) Credit Note with payment and allocations.</li>
-                <li><strong style="font-weight: bold;">Credit Note (ACCPAYCREDIT)</strong>: An Accounts Payable (supplier) Credit Note with payment and allocations.</li>
-                <li><strong style="font-weight: bold;">Inventory Adjustment</strong>: For tracked product, if qty will be increasing or decreasing in Odoo using an option like (Buying and selling inventory - bills and invoices, By Inventory adjustment, By Manufacturing process) it will be reflected in Xero.</li>
-                <li><strong style="font-weight: bold;">Attachment</strong>: Attachments of Invoice/Vendor Bill will be sent to Xero.</li>
-            </ul>
-            <strong style="color: red; font-weight: bold;">Note:</strong> You can either Import or Export Credit Note based on configuration.
-            <br/><br/>
-            <table class="table">
-              <thead class="thead-dark">
-                <tr>
-                  <th scope="col" style="background-color: #875A7B; border-color: #875A7B;">#</th>
-                  <th scope="col" style="background-color: #875A7B; border-color: #875A7B;">Objects</th>
-                  <th scope="col" style="background-color: #875A7B; border-color: #875A7B;"><center>OAuth2.0</center></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Taxes</td>
-                  <td><center><i class="fa fa-check"/></center></td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Chart of Accounts</td>
-                  <td><center><i class="fa fa-check"/></center></td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Bank Accounts</td>
-                  <td><center><i class="fa fa-check"/></center></td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>Contact Groups</td>
-                  <td><center><i class="fa fa-check"/></center></td>
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>Contacts</td>
-                  <td><center><i class="fa fa-check"/></center></td>
-                </tr>
-                <tr>
-                  <th scope="row">6</th>
-                  <td>Products</td>
-                  <td><center><i class="fa fa-check"/></center></td>
-                </tr>
-                <tr>
-                  <th scope="row">7</th>
-                  <td>Invoices/ Bills</td>
-                  <td><center><i class="fa fa-check"/></center></td>
-                </tr>
-                <tr>
-                  <th scope="row">8</th>
-                  <td>Credit Notes</td>
-                  <td><center><i class="fa fa-check"/></center></td>
-                </tr>
-                <tr>
-                  <th scope="row">9</th>
-                  <td>Invoices/ Bills</td>
-                  <td><center><i class="fa fa-check"/></center></td>
-                </tr>
-                <tr>
-                  <th scope="row">10</th>
-                  <td>Invoice / Bill Payments</td>
-                  <td><center><i class="fa fa-check"/></center></td>
-                </tr>
-                <tr>
-                  <th scope="row">11</th>
-                  <td>Credit Notes Payments / Allocation</td>
-                  <td><center><i class="fa fa-check"/></center></td>
-                </tr>
-                <tr>
-                  <th scope="row">12</th>
-                  <td>Inventory Adjustments</td>
-                  <td><center><i class="fa fa-check"/></center></td>
-                </tr>
-                <tr>
-                  <th scope="row">13</th>
-                  <td>Invoice Attachments</td>
-                  <td><center><i class="fa fa-check"/></center></td>
-                </tr>
-                <tr>
-                  <th scope="row">14</th>
-                  <td>Credit Notes Attachments</td>
-                  <td><center><i class="fa fa-check"/></center></td>
-                </tr>
-                <tr>
-                  <th scope="row">15</th>
-                  <td>Contact Attachments</td>
-                  <td><center><i class="fa fa-check"/></center></td>
-                </tr>
-              </tbody>
-            </table>
-        </div>
-    </div>
-</section>
-
-<!--Fifth block -->
-<section class="oe_container">
-    <div class="oe_row">
-        <div class="oe_span12" style="color:#875A7B;">
-            <h2 class="oe_slogan"><img src="document-file-icon.png" height="45px" width="45px"/> Xero setup guide</h2>
-        </div>
-        <div class="oe_span12" style="font-size: large;">
-            <div>You will also find a full documentation with all screenshots for example</div>
-            <div>1 - How to configure Xero OAuth 1.0</div>
-            <div>2 - How to configure Xero OAuth 2.0</div>
-            <div>3 - How to configure Xero and Odoo Accounts?</div>
-            <div>4 - Import and Export Operations</div>
-            <div>You will find user_guide.pdf document in <strong>doc</strong> directory inside the module</div>
-            <div>
-                <strong style="color: red;">Note: </strong> For Odoo.sh we have added installation steps in documentation, but if you need more then, we will provide you more support once you purchase support hours from us.
-            </div>
-        </div>
-    </div>
-</section>
 <!--Sixth block -->
 <!-- <section class="oe_container oe_dark">
     <div class="oe_row oe_spaced">
@@ -334,12 +670,12 @@
 <!--Seventh block -->
 
 <section class="oe_container">
-    <div class="oe_row">
-        <div class="oe_span12" style="font-size: large;">
-            <h2 class="oe_slogan"><img src="disclaimer-icon.png" height="45px" width="45px"/> Disclaimer</h2>
-        </div>
-        <div class="oe_span12" style="font-size: large;">
-            Whenever there is a change in API from Xero or change in related Odoo objects you can contact us to look into it.
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan"><img src="question_faq.png" height="45px" width="45px"> FAQs</h2>
+        <div class="oe_span12" style="font-size: large">
+            <center class="oe_mt32 oe_centeralign">
+              <div>For Frequently Asked Questions for this module you can refer to our FAQ tab of this Index file</div>
+            </center>
         </div>
     </div>
 </section>
@@ -349,7 +685,7 @@
         <h2 class="oe_slogan"><img src="accounting.png" height="45px" width="45px"> Check out our Top Selling Accounting Products</h2>
         <div class="oe_span12" style="font-size: large">
         <center>
-            <a href="https://apps.odoo.com/apps/modules/category/Accounting/browse?order=Best+Sellers&search=synconics" target="_blank">
+            <a href="https://apps.odoo.com/apps/modules/category/Accounting/browse?order=Best+Sellers&author=Synconics+Technologies+Pvt.+Ltd" target="_blank">
             <img src="Click_Here.png" width="20%" class="mt8"/> 
         </a>
         </center>
@@ -365,20 +701,20 @@
         <!--Facebook-->
         <center>
             <a href="https://www.facebook.com/Synconics-Technologies-Official-Odoo-Partner-312564668790997/" target="_blank">
-            <img src="facebook.png" width="20%" class="mt8"/> 
+            <img src="facebook_new.png" width="20%" class="mt8"/> 
             </a>
             <a href="https://www.instagram.com/synconics_technologies/" target="_blank">
-            <img src="instagram.png" width="20%" class="mt8"/> 
+            <img src="instagram_new.png" width="20%" class="mt8"/> 
             </a>
             <a href="https://www.linkedin.com/company/synconics-technologies-p-ltd-" target="_blank">
-            <img src="linkedin.png" width="20%" class="mt8"/> 
+            <img src="linkedin_new.jpg" width="20%" class="mt8"/> 
             </a>
             <a href="https://twitter.com/Synconics" target="_blank">
-            <img src="twitter.png" width="20%" class="mt8"/> 
+            <img src="twitter_new.png" width="20%" class="mt8"/> 
             </a>
             <br/>
             <a href="https://www.youtube.com/user/synconics" target="_blank">
-            <img src="youtube.png" width="20%" class="mt8"/> 
+            <img src="youtube_new.png" width="20%" class="mt8"/> 
             </a>
         </center>
     </div>
@@ -485,11 +821,12 @@
             <h2 class="oe_slogan">Free Support</h2>
         </div>
         <div class="oe_span12" style="width: 100%;">
-            <span>1) One month free bug support period will be offered pertaining to any one server used, testing or live.</span><br/>
+            <span>1) One month free bug support period will be offered pertaining to anyone server used, testing, or live.</span><br/>
             <span>2) If an error appears in our app due to other custom modules installed in your system, we will charge for our efforts to resolve those errors. </span><br/>
-            <span>3) Please refer the document for configuration. If you need our support for configuration, please request our paid support. </span><br/>
+            <span>3) Please refer to the document for configuration. If you need our support for configuration, please request our paid support. </span><br/>
             <span>4) Please note that you are not allowed to distribute or resell this module after purchase. </span><br/>
             <span>5) This module is tested and working on Odoo vanilla with Ubuntu OS. </span><br/>
+            <span>6) Support services will be provided from Monday to Friday, 10:30 AM to 7:30 PM IST (Indian Standard Time). </span><br/>
         </div>
     </div>
 </section>
@@ -593,6 +930,33 @@
     <div class="oe_row oe_spaced">
         <div class="oe_span12">
             <span style="font-size: 20px">For product demo, please generate a ticket and mention your preferred time and date. Please make sure the demo timing you mentioned are as per Indian Standard Time (IST), between 10:30 AM to 7:00 PM (IST), Monday to Friday.</span>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container" style="position: fixed;right: 10px;bottom: 20px;background-color: transparent;width: auto;height: auto;left: auto;top: auto;">
+    <div class="oe_row oe_spaced" style="width: auto;">
+        <div class="oe_slogan oe_spaced" style="margin: 0;">
+            <div class="synconics_btn" data-toggle="collapse" href="#synconics_popup" role="button" aria-expanded="true" aria-controls="synconics_popup" style="width: 50px;height: 50px;border-radius: 50%;display: flex;background-color: #FF6550;justify-content: center;align-items: center;color: #fff;">
+                <i class="fa fa-bars"/>
+            </div>
+            <div class="collapse show" id="synconics_popup" style="position: fixed;bottom: 106px;right: 12px;z-index: 1001;">
+                <div class="whatsapp" style="width: 50px;height: 50px;border-radius: 50%;display: flex;background-color: #25D366;justify-content: center;align-items: center;color: #fff;margin-bottom: 10px;">
+                    <a href="https://wa.me/919426864274" title="Whatsapp Us" target="_blank" style="color: #fff;font-size: 18px;">
+                        <i class="fa fa-whatsapp" style="font-size: 31px;" />
+                    </a>
+                </div>
+                <div class="gmail" style="width: 50px;height: 50px;border-radius: 50%;display: flex;background-color: #848484;justify-content: center;align-items: center;margin-bottom: 10px;color: #fff;">
+                    <a href="mailto:contact@synconics.com" title="E-Mail Us Your Business Requirements" target="_blank" style="color: #fff;font-size: 18px;">
+                        <i class="fa fa-envelope" style="font-size: 31px;" />
+                    </a>
+                </div>
+                <div class="Skype" style="width: 50px;height: 50px;border-radius: 50%;display: flex;background-color: #00AFF0;justify-content: center;align-items: center;color: #fff;margin-bottom: 10px;color: #fff;" title="Ping Us on Skype">
+                    <a href="skype:synconics.technologies?chat" style="color: #fff;font-size: 18px;">
+                        <i class="fa fa-skype" style="font-size: 31px;" />
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </section>

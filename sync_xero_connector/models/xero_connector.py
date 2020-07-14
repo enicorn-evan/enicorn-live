@@ -110,6 +110,12 @@ class XeroAccount(models.Model):
     xero_org_id = fields.Many2one('xero.organization', string='Import/Export Xero Organization')
     contact_overwrite = fields.Boolean(string='Contact Overwrite')
 
+    @api.onchange('oauth_type')
+    def _onchange_oauth(self):
+        for rec in self:
+            if rec.oauth_type == 'oauth2':
+                rec.account_type = 'private'
+
     def _re_authenticate(self):
         self.ensure_one()
         if self.account_type == 'public':
@@ -294,7 +300,8 @@ class XeroAccount(models.Model):
                 # Export Inventory Adjustments
                 self.env['stock.move.line'].create_inventory_adjustments(xero, company=record.company_id.id)
                 #Export Attachment
-                self.env['ir.attachment'].export_attachments(xero, company=record.company_id.id)
+                record.export_attachments()
+                # self.env['ir.attachment'].export_attachments(xero, company=record.company_id.id)
 
     def import_currency(self):
         self.ensure_one()
