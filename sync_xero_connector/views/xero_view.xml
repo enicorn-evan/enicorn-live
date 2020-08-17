@@ -49,10 +49,10 @@
                         <field name="raw_uri" widget="url" attrs="{'invisible': [('raw_url', '=', False)]}"/>
                         <field name="state" invisible="1"/>
                     </group>
-                    <button name="authenticate" string="Authentication" type="object" attrs="{'invisible': [('oauth_type','!=','oauth2')]}"/>
+                    <button name="authenticate" string="Authentication" type="object" attrs="{'invisible': ['|',('oauth_type','!=','oauth2'),('raw_uri', '=', False)]}"/>
                     <group>
                         <field name="auth" invisible="1"/>
-                        <field name="xero_org_id" domain="[('xero_account_id', '=', id)]" options="{'no_create': 1, 'no_edit': 1}" attrs="{'invisible': [('oauth_type','!=','oauth2')]}"/>
+                        <field name="xero_org_id" domain="[('xero_account_id', '=', id)]" options="{'no_create': 1, 'no_edit': 1}" attrs="{'invisible': ['|',('oauth_type','!=','oauth2'), ('auth', '=', False)]}"/>
                         <!-- <button name="auth2_import_contact" string="Import Contact" type="object"/> -->
                     </group>
                     <p class="oe_grey" attrs="{'invisible': [('oauth_type','!=','oauth2')]}">
@@ -99,66 +99,78 @@
                         </group>
                     </group>
                     <p class="oe_grey" attrs="{'invisible': [('account_type','=','public')]}">
-                        <strong>Note</strong>: Please tick 'Contact Overwrite' boolean, If you want to same name &amp; email contact overwrite to both side. <br/>
+                        <strong>Note</strong>: By Enabling this option contacts with same name and email address will be overwritten automatically in Odoo as well as Xero side. <br/>
                     </p>
                     <label for="import_export_creditnotes" string="Credit Notes" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
                     <field name="import_export_creditnotes" widget="radio" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
                     <p class="oe_grey" attrs="{'invisible': [('account_type','=','public')]}">
                         <strong>Note</strong>: You can either Import or Export Credit Note based on configuration.
                     </p>
-                    <separator string="Import" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
-                    <br/>
-                    <label for="import_option" string="Option" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
-                    <field name="import_option" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" widget="radio"/>
-                    <br/>
-                    <label for="inv_without_product" string="If you want to import invoice without product tick this" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
-                    <field name="inv_without_product" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
-                    <br/>
-                    <group>
-                        <group>
-                            <field name="tracked_category_id" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
-                        </group>
-                        <group>
-                            <field name="untracked_category_id" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
-                        </group>
-                    </group>
-                    <br/>
-                    <br/>
-                    <button name="import_currency" string="Currencies" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
-                    <button name="import_tax" string="Taxes" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
-                    <button name="import_account" string="Chart of Accounts" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
-                    <button name="import_manual_journal" string="Manual Journals" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
-                    <button name="import_bank_account" string="Bank Accounts" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
-                    <button name="import_contact" string="Contacts" type="object" attrs="{'invisible': ['|',('contact_overwrite','=', True), ('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
-                    <button name="import_contact_overwrite" string="Contacts" type="object" attrs="{'invisible': ['|',('contact_overwrite','=', False),('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
-                    <button name="import_product" string="Products" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
-                    <button name="import_invoice" string="Invoices" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
-                    <button name="import_credit_notes" string="Credit Notes" type="object" attrs="{'invisible': ['|',('import_export_creditnotes', 'not in', 'import'),('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
-                    <separator string="Export" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
-                    <group>
-                        <group>
-                            <field name="adjustment_account_id" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
-                        </group>
-                        <group></group>
-                    </group>
-                    <label for="export_disable" string="Disable Export (Accounts &amp; Taxes)" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
-                    <field name="export_disable" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
-                    <br/>
-                    <button name="export_tax" string="Taxes" type="object" attrs="{'invisible': ['|', ('export_disable', '=', True), ('account_type','=','public'),('url', '=', False)]}"/>
-                    <button name="export_account" string="Chart of Accounts" type="object" attrs="{'invisible': ['|', ('export_disable', '=', True), ('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
-                    <button name="export_bank_account" string="Bank Accounts" type="object" attrs="{'invisible': ['|', ('export_disable', '=', True), ('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
-                    <button name="export_contact" string="Contacts" type="object" attrs="{'invisible': ['|',('contact_overwrite','=', True), ('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
-                    <button name="export_contact_overwrite" string="Contacts" type="object" attrs="{'invisible': ['|',('contact_overwrite','=', False),('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
-                    <button name="export_product" string="Products" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
-                    <button name="export_invoice" string="Invoices" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
-                    <button name="export_payment" string="Invoice Payment" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
-                    <button name="export_credit_notes" string="Credit Notes" type="object" attrs="{'invisible': ['|',('import_export_creditnotes', 'not in', 'export'),('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
-                    <button name="export_credit_notes_payment" string="Credit Notes Payment" type="object" attrs="{'invisible': ['|',('import_export_creditnotes', 'not in', 'export'),('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
-                    <button name="export_inventory_adjustments" string="Inventory Adjustments" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
-                    <button name="export_attachments" string="Attachments" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
-                    <!-- <button name="export_manual_journal" string="Manual Journal" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/> -->
-                    <br/>
                     <notebook>
+                        <page string="Import Details">
+                            <!-- <separator string="Import" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
+                            <br/> -->
+                            <label for="import_option" string="Option" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
+                            <field name="import_option" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" widget="radio"/>
+                            <br/>
+                            <label for="inv_without_product" string="If you want to import invoice without product tick this" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
+                            <field name="inv_without_product" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
+                            <br/>
+                            <group>
+                                <group>
+                                    <field name="tracked_category_id" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
+                                </group>
+                                <group>
+                                    <field name="untracked_category_id" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
+                                </group>
+                            </group>
+                            <br/>
+                            <br/>
+                            <button name="import_currency" string="Currencies" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
+                            <button name="import_tax" string="Taxes" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                            <button name="import_account" string="Chart of Accounts" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                            <button name="import_manual_journal" string="Manual Journals" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                            <button name="import_bank_account" string="Bank Accounts" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                            <button name="import_contact" string="Contacts" type="object" attrs="{'invisible': ['|',('contact_overwrite','=', True), ('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                            <button name="import_contact_overwrite" string="Contacts" type="object" attrs="{'invisible': ['|',('contact_overwrite','=', False),('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                            <button name="import_product" string="Products" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                            <button name="import_invoice" string="Invoices" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                            <button name="import_credit_notes" string="Credit Notes" type="object" attrs="{'invisible': ['|',('import_export_creditnotes', 'not in', 'import'),('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                        </page>
+                        <page string="Export Details">
+                            <separator string="Export" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
+                            <group>
+                                <group>
+                                    <field name="adjustment_account_id" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
+                                </group>
+                                <group></group>
+                            </group>
+                            <label for="export_disable" string="Disable Export (Accounts &amp; Taxes)" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
+                            <field name="export_disable" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}"/>
+                            <br/>
+                            <p class="oe_grey" attrs="{'invisible': [('account_type','=','public'), ('url', '=', False)]}">
+                                <strong>Notes</strong>: Attachments can be exported to<br/>
+                                1. Customers/Vendors <br/>
+                                2. Customer Invoices/Vendor Bills <br/>
+                                3. Credit Notes/Refund <br/>
+                            </p>
+                            <br/>
+                            <button name="export_tax" string="Taxes" type="object" attrs="{'invisible': ['|', ('export_disable', '=', True), ('account_type','=','public'),('url', '=', False)]}"/>
+                            <button name="export_account" string="Chart of Accounts" type="object" attrs="{'invisible': ['|', ('export_disable', '=', True), ('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                            <button name="export_bank_account" string="Bank Accounts" type="object" attrs="{'invisible': ['|', ('export_disable', '=', True), ('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                            <button name="export_contact" string="Contacts" type="object" attrs="{'invisible': ['|',('contact_overwrite','=', True), ('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                            <button name="export_contact_overwrite" string="Contacts" type="object" attrs="{'invisible': ['|',('contact_overwrite','=', False),('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                            <button name="export_product" string="Products" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                            <button name="export_invoice" string="Invoices" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                            <button name="export_payment" string="Invoice Payment" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                            <button name="export_credit_notes" string="Credit Notes" type="object" attrs="{'invisible': ['|',('import_export_creditnotes', 'not in', 'export'),('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                            <button name="export_credit_notes_payment" string="Credit Notes Payment" type="object" attrs="{'invisible': ['|',('import_export_creditnotes', 'not in', 'export'),('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                            <button name="export_inventory_adjustments" string="Inventory Adjustments" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                            <button name="export_attachments" string="Attachments" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/>
+                            <!-- <button name="export_manual_journal" string="Manual Journal" type="object" attrs="{'invisible': [('account_type','=','public'),('url', '=', False)]}" style="margin-left:8px;"/> -->
+                        </page>
+                    <!-- <br/>
+                    <notebook> -->
                         <page string="Accounting Details">
                             <group>
                                 <group>
