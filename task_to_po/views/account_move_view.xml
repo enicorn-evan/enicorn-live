@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+	    <!-- Inherit Account Move Form View -->
+	    <record id="account_move_form_view_inherit_task_to_po" model="ir.ui.view">
+	        <field name="name">account.move.form.view.inherit.task.to.po</field>
+	        <field name="model">account.move</field>
+	        <field name="inherit_id" ref="account.view_move_form"/>
+	        <field name="arch" type="xml">
+	        	<field name="ref" position="after">
+	        		<field name="project_id" options="{'no_create': True}" readonly="1" attrs="{'invisible': [('project_id', '=', False)]}"/>
+	        		<field name="project_task_id" invisible="1"/>
+	        	</field>
+	        </field>
+	    </record>
+	</data>
+</odoo>

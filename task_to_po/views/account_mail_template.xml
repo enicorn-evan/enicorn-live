@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Mail Template Form View Inherit -->
+        <record id="mail_template_form_view_inherit_purchase_order" model="ir.ui.view">
+            <field name="name">mail.template.form.view.inherit.purchase.order</field>
+            <field name="model">mail.template</field>
+            <field name="inherit_id" ref="mail.email_template_form"/>
+            <field name="arch" type="xml">
+                <field name="model_object_field" position="attributes">
+                    <attribute name="domain"></attribute>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>
