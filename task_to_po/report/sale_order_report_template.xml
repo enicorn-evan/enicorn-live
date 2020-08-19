@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="inherit_sale_report" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//t/t/div" position="before">
+            <span t-field="doc.partner_id.parent_id.name"/><br/>
+            Contact Name : <span t-field="doc.partner_id.name"/><br/>
+            Contact Number : <span t-field="doc.partner_id.phone"/><br/>
+            <span t-field="doc.partner_id.mobile" style="margin-left:130px;"/><br/>
+            <span t-field="doc.partner_id.email"/>
+        </xpath>
+        <xpath expr="//t/t/div[@t-field='doc.partner_id']" position="replace">
+        	<div t-field="doc.partner_id"
+                t-options='{"widget": "contact", "fields": ["address"], "no_marker": True}' />
+        </xpath>
+        <xpath expr="//t/div/div/div/p[@t-field='doc.date_order']" position="replace">
+        	<p class="m-0" t-field="doc.date_order" t-options='{"widget": "date"}'/>
+        </xpath>
+    </template>
+</odoo>

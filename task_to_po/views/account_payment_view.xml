@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <!-- Inherit Acoount Payment View -->
+        <record id="view_account_payment_invoice_form_inherit_payment_view1" model="ir.ui.view">
+            <field name="name">view.account.payment.invoice.form.inherit.payment.view1</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form"/>
+            <field name="arch" type="xml">
+                <field name="communication" position="before">
+                    <field name="payment_type_id"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- Payment Type Tree View -->
+        <record id="view_payment_type_tree_view" model="ir.ui.view">
+            <field name="name">payment.type.tree.view</field>
+            <field name="model">payment.type</field>
+            <field name="arch" type="xml">
+                <tree editable="top">
+                    <field name="name" required="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Payment Type Action View -->
+        <record id="action_payment_type" model="ir.actions.act_window">
+            <field name="name">Payment Type</field>
+            <field name="res_model">payment.type</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+        <!-- Payment Type Menu -->
+        <menuitem
+        action="action_payment_type"
+        id="payment_type_menu"
+        parent="account.root_payment_menu"
+        sequence="1"
+        />
+</odoo>
