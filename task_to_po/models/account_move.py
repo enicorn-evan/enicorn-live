@@ -9,3 +9,15 @@ class AccountMove(models.Model):
 
     project_id = fields.Many2one('project.project', string="Project Name")
     project_task_id = fields.Many2one('project.task', string="Project Task")
+
+
+class AccountPayment(models.Model):
+    _inherit = 'account.payment'
+
+    payment_type_id = fields.Many2one('payment.type', string="Payment Type")
+
+
+class PaymentType(models.Model):
+    _name = "payment.type"
+
+    name = fields.Char(string="Name")
