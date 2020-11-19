@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_partner_view_form" model="ir.ui.view">
+        <field name="name">res.partner.view.form.inherit.contact_deduplicate</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="priority">10</field>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_get_duplicates_tree_view" type="object" class="oe_stat_button" icon="fa-copy" attrs="{'invisible': [('duplicate_len', '=', 0)]}">
+                    <div class="o_stat_info">
+                        <field name="duplicate_len" class="o_stat_value"/>
+                        <span class="o_stat_text" attrs="{'invisible': [('duplicate_len', '&lt;', 2)]}"> Duplicates</span>
+                        <span class="o_stat_text" attrs="{'invisible': [('duplicate_len', '&gt;', 1)]}"> Duplicate</span>
+                    </div>
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_res_partner_filter" model="ir.ui.view">
+        <field name="name">res.partner.select.inherit.contact_deduplicate</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search/filter[@name='type_company']" position="after">
+                 <filter name="duplicates" string="Have a duplicate(s)" domain="[('duplicate_have', '=', True)]"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
